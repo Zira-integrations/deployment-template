@@ -1,0 +1,27 @@
+{
+	"extends": "@tsconfig/node16/tsconfig.json",
+	"compilerOptions": {
+		"lib": [
+			"dom",
+			"es2021"
+		],
+		"types": [
+			"node"
+		],
+		"module": "ES6",
+		"declaration": true,
+		"strictNullChecks": true,
+		"experimentalDecorators": true,
+		"emitDecoratorMetadata": true,
+		"outDir": "./dist"
+	},
+	"include": [
+		"api/**/*",
+		"config/**/*",
+		"middleware/**/*",
+		"utils/**/*",
+		"./index.ts",
+		"model/**/*"
+	],
+	"allowJs": false
+}

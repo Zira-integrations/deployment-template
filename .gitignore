@@ -1,0 +1,6 @@
+**/.DS_Store
+**/.serverless
+**/.esbuild
+**/.dist
+**/node_modules
+**/dist

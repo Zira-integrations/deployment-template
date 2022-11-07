@@ -1,0 +1,5 @@
+[
+  "${file(config/serverless/resources/lambda.json)}",
+  "${file(config/serverless/resources/events.json)}",
+  "${file(config/serverless/resources/iam.json)}"
+]

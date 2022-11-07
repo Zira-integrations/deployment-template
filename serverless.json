@@ -1,0 +1,29 @@
+{
+	"service": "sandbox",
+	"package": {
+		"individually": true
+	},
+	"provider": {
+		"name": "aws",
+		"runtime": "nodejs16.x",
+		"versionFunctions": false,
+		"stage": "${opt:stage, 'prod'}",
+		"region": "${file(config/serverless/region.json):${self:provider.stage}}",
+		"environment": "${file(config/serverless/loadEnvs.js)}",
+		"iamRoleStatements": "${file(config/serverless/iamRoleStatements.json)}",
+		"deploymentBucket": {
+			"name": "serverless.${self:provider.stage}.deploys",
+			"blockPublicAccess": "true"
+		}
+	},
+	"plugins": ["serverless-esbuild", "serverless-plugin-aws-alerts"],
+	"functions": "${file(config/serverless/functions.json)}",
+	"custom": {
+		"esbuild": {
+			"config": "./esbuild.config.js"
+		  },
+		"secrets": "${file(config/serverless/secrets.json)}",
+		"alerts": "${file(config/serverless/alerts.json)}"
+	},
+	"resources": "${file(config/serverless/resources.json)}"
+}

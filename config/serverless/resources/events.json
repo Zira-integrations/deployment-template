@@ -1,0 +1,35 @@
+{
+  "Resources": {
+    "CompleteSignedUploadsEventRule": {
+      "Type": "AWS::Events::Rule",
+      "Properties": {
+        "Description": "Catches S3 ObjectCreated events",
+        "State": "ENABLED",
+        "EventPattern": {
+          "detail-type": ["Object Created"],
+          "source": ["aws.s3"],
+          "detail": {
+            "bucket": {
+              "name": ["data-${self:provider.stage}"]
+            },
+            "object": {
+              "key": [
+                {
+                  "prefix": "${self:service}/"
+                }
+              ]
+            }
+          }
+        },
+        "Targets": [
+          {
+            "Id": "AdapterTarget",
+            "Arn": {
+              "Fn::GetAtt": ["AdapterLambdaFunction", "Arn"]
+            }
+          }
+        ]
+      }
+    }
+  }
+}

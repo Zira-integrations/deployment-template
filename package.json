@@ -1,0 +1,28 @@
+{
+  "name": "sandbox",
+  "version": "1.0.0",
+  "description": "This is a template (project) that would serve as R&D environment",
+  "main": "esbuild.config.js",
+  "scripts": {
+    "deploy-dev": "sh ../../mydeploy-dev.sh",
+    "deploy-prod": "sh ../../mydeploy-prod.sh"
+  },
+  "dependencies": {
+    "@middy/core": "^3.6.2",
+    "@middy/http-header-normalizer": "^3.6.2"
+  },
+  "devDependencies": {
+    "@tsconfig/node16": "^1.0.3",
+    "@types/aws-lambda": "^8.10.108",
+    "@types/node": "^18.11.9",
+    "esbuild": "^0.15.12",
+    "esbuild-node-externals": "^1.5.0",
+    "serverless": "^3.19.0",
+    "serverless-esbuild": "^1.33.0",
+    "serverless-plugin-aws-alerts": "^1.7.5",
+    "ts-loader": "^9.4.1",
+    "typescript": "^4.8.4"
+  },
+  "author": "Zira",
+  "license": "ISC"
+}
