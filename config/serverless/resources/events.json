@@ -10,7 +10,7 @@
           "source": ["aws.s3"],
           "detail": {
             "bucket": {
-              "name": ["data-${self:provider.stage}"]
+              "name": ["integrations-data-zira-${self:provider.stage}"]
             },
             "object": {
               "key": [

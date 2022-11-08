@@ -4,8 +4,8 @@
   "description": "This is a template (project) that would serve as R&D environment",
   "main": "esbuild.config.js",
   "scripts": {
-    "deploy-dev": "sh ../../mydeploy-dev.sh",
-    "deploy-prod": "sh ../../mydeploy-prod.sh"
+    "deploy-dev": "sh ../mydeploy-dev.sh",
+    "deploy-prod": "sh ../mydeploy-prod.sh"
   },
   "dependencies": {
     "@middy/core": "^3.6.2",

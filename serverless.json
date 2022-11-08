@@ -12,7 +12,7 @@
 		"environment": "${file(config/serverless/loadEnvs.js)}",
 		"iamRoleStatements": "${file(config/serverless/iamRoleStatements.json)}",
 		"deploymentBucket": {
-			"name": "serverless.${self:provider.stage}.deploys",
+			"name": "serverless-deploys-zira-${self:provider.stage}",
 			"blockPublicAccess": "true"
 		}
 	},
@@ -22,8 +22,8 @@
 		"esbuild": {
 			"config": "./esbuild.config.js"
 		  },
-		"secrets": "${file(config/serverless/secrets.json)}",
-		"alerts": "${file(config/serverless/alerts.json)}"
+		"alerts": "${file(config/serverless/alerts.json)}",
+		"accountId": "419687873428"
 	},
 	"resources": "${file(config/serverless/resources.json)}"
 }

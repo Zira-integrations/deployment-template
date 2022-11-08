@@ -7,8 +7,9 @@
         "Principal": "events.amazonaws.com",
         "FunctionName": {
           "Fn::Sub": [
-            "arn:aws:lambda:${REGION}:389281959699:function:${FUNCTION}",
+            "arn:aws:lambda:${REGION}:${ACCOUNT}:function:${FUNCTION}",
             {
+              "ACCOUNT": "${self:custom.accountId}",
               "REGION": "${file(config/serverless/region.json):${self:provider.stage}}",
               "FUNCTION": "${self:service}-${self:provider.stage}-adapter"
             }
