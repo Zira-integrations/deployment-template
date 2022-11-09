@@ -5,7 +5,7 @@
   "main": "esbuild.config.js",
   "scripts": {
     "deploy-dev": "sh ../infra/mydeploy-dev.sh",
-    "deploy-prod": "sh ../mydeploy-prod.sh"
+    "deploy-prod": "sh ../infra/mydeploy-prod.sh"
   },
   "dependencies": {
     "@middy/core": "^3.6.2",
