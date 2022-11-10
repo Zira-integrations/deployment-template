@@ -1,0 +1,11 @@
+{
+    "Resources": {
+      "AdapterLogGroup": {
+        "Type": "AWS::Logs::LogGroup",
+        "Properties": {
+          "RetentionInDays": "30"
+        }
+      }
+    }
+  }
+  
