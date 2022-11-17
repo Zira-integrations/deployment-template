@@ -3,13 +3,15 @@
   "version": "1.0.0",
   "description": "This is a template (project) that would serve as R&D environment",
   "main": "esbuild.config.js",
+  "type": "module",
   "scripts": {
     "deploy-dev": "sh ../infra/mydeploy-dev.sh",
     "deploy-prod": "sh ../infra/mydeploy-prod.sh"
   },
   "dependencies": {
     "@middy/core": "^3.6.2",
-    "@middy/http-header-normalizer": "^3.6.2"
+    "@middy/http-header-normalizer": "^3.6.2",
+    "got": "^12.5.2"
   },
   "devDependencies": {
     "@tsconfig/node16": "^1.0.3",

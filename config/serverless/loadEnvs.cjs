@@ -1,20 +1,17 @@
 
-function mergeObjs(){
+async function mergeObjs(){
     const cwd = process.cwd()
     let localEnvs = {}, globalEnvs = {}, vaultEnvs = {}
 
     try{
-        localEnvs = require('./environment.json')
+        localEnvs = (await import("./environment.json", { assert: { type: "json" } })).default
+        console.log(JSON.stringify(localEnvs))
     } catch(err){
+        console.error(err)
         console.info('no local roles file')
     }
     try{
-        globalEnvs = require('./environment.json')
-    } catch(err){
-        console.info('no global roles file')
-    }
-    try{
-        vaultEnvs = require('./secrets.json')
+        vaultEnvs = await import("secrets.json", { assert: { type: "json" } })
     } catch(err){
         console.info('no vault roles file')
     }

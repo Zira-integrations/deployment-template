@@ -9,7 +9,7 @@
 		"versionFunctions": false,
 		"stage": "${opt:stage, 'prod'}",
 		"region": "${file(config/serverless/region.json):${self:provider.stage}}",
-		"environment": "${file(config/serverless/loadEnvs.js)}",
+		"environment": "${file(config/serverless/loadEnvs.cjs)}",
 		"cfnRole": "arn:aws:iam::${self:custom.accountId}:role/DeploymentServiceRole",
 		"iamRoleStatements": "${file(config/serverless/iamRoleStatements.json)}",
 		"deploymentBucket": {
@@ -21,7 +21,7 @@
 	"functions": "${file(config/serverless/functions.json)}",
 	"custom": {
 		"esbuild": {
-			"config": "./esbuild.config.js"
+			"config": "./esbuild.config.cjs"
 		  },
 		"alerts": "${file(config/serverless/alerts.json)}",
 		"accountId": "419687873428"

@@ -3,5 +3,6 @@ module.exports = (serverless) => ({
     external: ["pg-native"],
     minify: true,
     target: "node16",
-    keepOutputDirectory: true
+    keepOutputDirectory: true,
+    platform: "node"
 });
