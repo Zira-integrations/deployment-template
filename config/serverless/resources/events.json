@@ -1,6 +1,6 @@
 {
   "Resources": {
-    "CompleteSignedUploadsEventRule": {
+    "TestCompanyRule": {
       "Type": "AWS::Events::Rule",
       "Properties": {
         "Description": "Catches S3 ObjectCreated events",
@@ -15,7 +15,7 @@
             "object": {
               "key": [
                 {
-                  "prefix": "${self:service}/"
+                  "prefix": "${self:context.testCompany.prefix}/"
                 }
               ]
             }

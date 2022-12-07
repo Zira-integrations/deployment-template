@@ -1,5 +1,6 @@
 {
 	"service": "sandbox",
+	"context": "${file(config/contextConfig/config.json)}",
 	"package": {
 		"individually": true
 	},
