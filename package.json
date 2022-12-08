@@ -12,6 +12,7 @@
     "@middy/core": "^3.6.2",
     "@middy/http-header-normalizer": "^3.6.2",
     "aws-sdk": "^2.1268.0",
+    "fast-csv": "^4.3.6",
     "got": "^12.5.2",
     "mailparser": "^3.5.0"
   },
