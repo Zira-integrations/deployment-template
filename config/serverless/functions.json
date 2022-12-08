@@ -1,5 +1,8 @@
 {
   "adapter": {
     "handler": "functions/adapter.handler"
+  },
+  "adapter2": {
+    "handler": "functions/adapter2.handler"
   }
 }

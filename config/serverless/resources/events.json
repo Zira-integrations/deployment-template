@@ -30,6 +30,37 @@
           }
         ]
       }
+    },
+    "TestCompanyRule2": {
+      "Type": "AWS::Events::Rule",
+      "Properties": {
+        "Description": "Catches S3 ObjectCreated events",
+        "State": "ENABLED",
+        "EventPattern": {
+          "detail-type": ["Object Created"],
+          "source": ["aws.s3"],
+          "detail": {
+            "bucket": {
+              "name": ["integrations-data-zira-${self:provider.stage}"]
+            },
+            "object": {
+              "key": [
+                {
+                  "prefix": "${self:context.testCompany2.prefix}/"
+                }
+              ]
+            }
+          }
+        },
+        "Targets": [
+          {
+            "Id": "Adapter2Target",
+            "Arn": {
+              "Fn::GetAtt": ["Adapter2LambdaFunction", "Arn"]
+            }
+          }
+        ]
+      }
     }
   }
 }

@@ -1,6 +1,10 @@
 {
     "testCompany": {
-        "prefix": "test",
+        "prefix": "test1",
+        "apiKey": "2f6ace0c-e460-45d2-a417-e9fc1e5ff677"
+    },
+    "testCompany2": {
+        "prefix": "test2",
         "apiKey": "2f6ace0c-e460-45d2-a417-e9fc1e5ff677"
     }
 }

@@ -1,0 +1,10 @@
+{
+    "Resources": {
+        "HostedZoneResource": {
+            "Type": "AWS::Route53::HostedZone",
+            "Properties": {
+                "Name": "int.zira.us"
+            }
+        }
+    }
+}

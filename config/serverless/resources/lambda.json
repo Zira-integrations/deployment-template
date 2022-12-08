@@ -2,7 +2,9 @@
   "Resources": {
     "adapterPermission": {
       "Type": "AWS::Lambda::Permission",
-      "DependsOn": ["AdapterLambdaFunction"],
+      "DependsOn": [
+        "AdapterLambdaFunction"
+      ],
       "Properties": {
         "Principal": "events.amazonaws.com",
         "FunctionName": {
@@ -12,6 +14,26 @@
               "ACCOUNT": "${self:custom.accountId}",
               "REGION": "${file(config/serverless/region.json):${self:provider.stage}}",
               "FUNCTION": "${self:service}-${self:provider.stage}-adapter"
+            }
+          ]
+        },
+        "Action": "lambda:InvokeFunction"
+      }
+    },
+    "adapter2Permission": {
+      "Type": "AWS::Lambda::Permission",
+      "DependsOn": [
+        "Adapter2LambdaFunction"
+      ],
+      "Properties": {
+        "Principal": "events.amazonaws.com",
+        "FunctionName": {
+          "Fn::Sub": [
+            "arn:aws:lambda:${REGION}:${ACCOUNT}:function:${FUNCTION}",
+            {
+              "ACCOUNT": "${self:custom.accountId}",
+              "REGION": "${file(config/serverless/region.json):${self:provider.stage}}",
+              "FUNCTION": "${self:service}-${self:provider.stage}-adapter2"
             }
           ]
         },

@@ -15,13 +15,36 @@
                     "Enabled": true,
                     "ScanEnabled": true,
                     "Recipients": [
-                        "test1@int.zira.us"
+                        "test@int.zira.us"
                     ],
                     "Actions": [
                         {
                             "S3Action": {
                                 "BucketName": "integrations-data-zira-${self:provider.stage}",
-                                "ObjectKeyPrefix": "test1"
+                                "ObjectKeyPrefix": "${self:context.testCompany.prefix}"
+                            }
+                        }
+                    ]
+                }
+                
+            }
+        },
+        "ReceiptRule2": {
+            "Type": "AWS::SES::ReceiptRule",
+            "Properties": {
+                "RuleSetName": "ruleSet",
+                "Rule": {
+                    "Name": "ruleForTest2",
+                    "Enabled": true,
+                    "ScanEnabled": true,
+                    "Recipients": [
+                        "test2@int.zira.us"
+                    ],
+                    "Actions": [
+                        {
+                            "S3Action": {
+                                "BucketName": "integrations-data-zira-${self:provider.stage}",
+                                "ObjectKeyPrefix": "${self:context.testCompany2.prefix}"
                             }
                         }
                     ]
