@@ -1,0 +1,40 @@
+{
+    "Resources": {
+        "ReceiptRuleSet": {
+            "Type": "AWS::SES::ReceiptRuleSet",
+            "Properties": {
+                "RuleSetName": "ruleSet"
+            }
+        },
+        "ReceiptRule": {
+            "Type": "AWS::SES::ReceiptRule",
+            "Properties": {
+                "RuleSetName": "ruleSet",
+                "Rule": {
+                    "Name": "ruleForTest",
+                    "Enabled": true,
+                    "ScanEnabled": true,
+                    "Recipients": [
+                        "test1@int.zira.us"
+                    ],
+                    "Actions": [
+                        {
+                            "S3Action": {
+                                "BucketName": "integrations-data-zira-${self:provider.stage}",
+                                "ObjectKeyPrefix": "test1"
+                            }
+                        }
+                    ]
+                }
+                
+            }
+        },
+        "DomainIdentityResource": {
+            "Type": "AWS::SES::EmailIdentity",
+            "Properties": {
+                "EmailIdentity": "int.zira.us"
+            }
+        }
+
+    }
+}
