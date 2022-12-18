@@ -1,8 +1,7 @@
 import middy from '@middy/core'
 import httpHeaderNormalizer from '@middy/http-header-normalizer'
-import readCsv from '../common/readCsv'
-import getApiKey from '../middlewares/getApiKey'
-import parseEmail from '../middlewares/parseEmail'
+import parseEmail from '@lightapp-public/common/lib/parseEmail'
+import readCsv from '@lightapp-public/common/lib/readCsv'
 
 export const adapter = async (event: any): Promise<void> => {
     const csvFile = event.email?.attachments[0]
@@ -15,5 +14,3 @@ export const adapter = async (event: any): Promise<void> => {
 export const handler = middy(adapter)
     .use(httpHeaderNormalizer())
     .use(parseEmail())
-    .use(getApiKey())
-    // .use(getCollectors())
