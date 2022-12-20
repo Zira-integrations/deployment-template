@@ -1,6 +1,6 @@
 {
   "Resources": {
-    "TestCompanyRule": {
+    "testSiteRule": {
       "Type": "AWS::Events::Rule",
       "Properties": {
         "Description": "Catches S3 ObjectCreated events",
@@ -15,7 +15,7 @@
             "object": {
               "key": [
                 {
-                  "prefix": "${self:context.testCompany.prefix}/"
+                  "prefix": "${self:context.testSite.prefix}/"
                 }
               ]
             }
@@ -31,7 +31,7 @@
         ]
       }
     },
-    "TestCompanyRule2": {
+    "testSiteRule2": {
       "Type": "AWS::Events::Rule",
       "Properties": {
         "Description": "Catches S3 ObjectCreated events",
@@ -46,7 +46,7 @@
             "object": {
               "key": [
                 {
-                  "prefix": "${self:context.testCompany2.prefix}/"
+                  "prefix": "${self:context.testSite2.prefix}/"
                 }
               ]
             }

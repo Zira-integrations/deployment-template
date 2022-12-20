@@ -21,7 +21,7 @@
                         {
                             "S3Action": {
                                 "BucketName": "integrations-data-zira-${self:provider.stage}",
-                                "ObjectKeyPrefix": "${self:context.testCompany.prefix}"
+                                "ObjectKeyPrefix": "${self:context.testSite.prefix}"
                             }
                         }
                     ]
@@ -44,7 +44,7 @@
                         {
                             "S3Action": {
                                 "BucketName": "integrations-data-zira-${self:provider.stage}",
-                                "ObjectKeyPrefix": "${self:context.testCompany2.prefix}"
+                                "ObjectKeyPrefix": "${self:context.testSite2.prefix}"
                             }
                         }
                     ]
