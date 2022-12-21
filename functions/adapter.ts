@@ -5,6 +5,8 @@ import readCsv from '@lightapp-public/common/lib/readCsv'
 
 export const adapter = async (event: any): Promise<void> => {
     const csvFile = event.email?.attachments[0]
+    console.log('contentType: ', csvFile?.contentType)
+
     if (csvFile?.contentType === 'text/csv') {
         const data = await readCsv(csvFile.content)
         console.log('Parsed: ',data)

@@ -1,4 +1,4 @@
-import { parseEmail } from '@lightapp-public/common/lib'
+import parseEmail from '@lightapp-public/common/lib/parseEmail'
 import middy from '@middy/core'
 import httpHeaderNormalizer from '@middy/http-header-normalizer'
 

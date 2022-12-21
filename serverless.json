@@ -1,6 +1,5 @@
 {
 	"service": "sandbox",
-	"context": "${file(config/contextConfig/config.json)}",
 	"package": {
 		"individually": true
 	},
@@ -25,7 +24,8 @@
 			"config": "./esbuild.config.cjs"
 		  },
 		"alerts": "${file(config/serverless/alerts.json)}",
-		"accountId": "419687873428"
+		"accountId": "419687873428",
+		"context": "${file(contextConfig.json)}"
 	},
 	"resources": "${file(config/serverless/resources.json)}"
 }

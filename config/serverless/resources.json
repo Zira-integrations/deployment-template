@@ -1,7 +1,5 @@
 [
-  "${file(config/serverless/resources/lambda.json)}",
-  "${file(config/serverless/resources/events.json)}",
-  "${file(config/serverless/resources/iam.json)}",
-  "${file(config/serverless/resources/logs.json)}",
-  "${file(config/serverless/resources/ses.json)}"
+  "${file(config/serverless/resources/lambda.cjs)}",
+  "${file(config/serverless/resources/events.cjs)}",
+  "${file(config/serverless/resources/ses.cjs)}"
 ]
