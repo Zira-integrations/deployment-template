@@ -25,7 +25,7 @@ async function buildLambdas({ resolveVariable }) {
                                 {
                                     "ACCOUNT": accountId,
                                     "REGION": region,
-                                    "FUNCTION": `${service}-${stage}-adapter`
+                                    "FUNCTION": `${service}-${stage}-${configItem.lambdaName}`
                                 }
                             ]
                         },

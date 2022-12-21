@@ -9,7 +9,7 @@
     "deploy-prod": "sh ../infra/mydeploy-prod.sh"
   },
   "dependencies": {
-    "@lightapp-public/common": "^1.0.22",
+    "@lightapp-public/common": "^1.0.25",
     "@middy/core": "^3.6.2",
     "@middy/http-header-normalizer": "^3.6.2",
     "aws-sdk": "^2.1268.0",
