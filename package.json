@@ -5,11 +5,12 @@
   "main": "esbuild.config.js",
   "type": "module",
   "scripts": {
-    "deploy-dev": "sh ../infra/mydeploy-dev.sh",
-    "deploy-prod": "sh ../infra/mydeploy-prod.sh"
+    "deploy-dev": "npm explore @lightapp-public/infra -- npx npm run deploy-dev",
+    "deploy-prod": "npm explore @lightapp-public/infra -- npx npm run deploy-prod"
   },
   "dependencies": {
     "@lightapp-public/common": "^1.0.25",
+    "@lightapp-public/infra": "^1.0.1",
     "@middy/core": "^3.6.2",
     "@middy/http-header-normalizer": "^3.6.2",
     "aws-sdk": "^2.1268.0",
