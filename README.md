@@ -22,8 +22,8 @@ This file is a collection of adapters. Each object configures a corresponding ad
 * `apiKey` (Optional). An api key that will be passed into an adapter function
 
 # Deployment 
-* dev stage: `npm run deploy-dev`
-* prod stage `npm run deploy-prod`
+* dev stage: `npx npm run deploy-dev`
+* prod stage `npx npm run deploy-prod`
 
 # AWS services
 * S3 bucket: integrations-data-zira-${stage}
