@@ -48,7 +48,7 @@ Clone this repo or click the "use this template" button. We recommend to use the
 
 | Option        | Required | Description                                                            |
 |---------------|----------|------------------------------------------------------------------------|
-| `prefix`      | true     | Every file uploaded with this prefix will trigger the adapter function |
+| `s3Prefix`      | true     | Every file uploaded with this prefix will trigger the adapter function |
 | `adapter`     | true     | The name of the adapter function under `adapters` folder               |
 | `emailPrefix` | false    | Will create a mailbox with this prefix @int.zira.us domain             |
 
