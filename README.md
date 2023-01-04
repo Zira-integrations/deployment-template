@@ -50,7 +50,7 @@ Clone this repo or click the "use this template" button. We recommend to use the
 |---------------|----------|------------------------------------------------------------------------|
 | `s3Prefix`      | true     | Every file uploaded with this prefix will trigger the adapter function |
 | `adapter`     | true     | The name of the adapter function under `adapters` folder               |
-| `emailPrefix` | false    | Will create a mailbox with this prefix @int.zira.us domain             |
+| `emailPrefix` | false    | Will create a mailbox with this prefix under @int.zira.us domain             |
 
 
 You can define multiple adapters under the same project in order to serve multiple sites or multiple kinds of integrations 
