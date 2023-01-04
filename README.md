@@ -22,7 +22,7 @@ Emails sent to the designated email address will automatically saved under s3 wi
 # Set up
 
 ## Step 1:  Create new repo based on this example 
-clone this repo or by click the "use this template" button. We recommend to use the company name as repository name as a best practice
+Clone this repo or click the "use this template" button. We recommend to use the company name as repository name as a best practice
 
 ## Step 2:  modify `context.json` 
   
