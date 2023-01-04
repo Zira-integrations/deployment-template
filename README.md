@@ -8,7 +8,7 @@ This example project contains the configuration and code examples to deploy emai
 
 # How it works?
 
-By cloning this repo and changing couple of variables changing configuration, developers can safely deploy below resources:
+By cloning this repo and changing couple of variables, developers can safely deploy below resources:
 - Mailbox with designated email address
 - S3 bucket with specified data prefix
 - Lambda function that run your custom parsing and integration code  
