@@ -1,7 +1,7 @@
 # Integration template
-This is a template (project) that would  serve as R&amp;D environment
+This example project contain the configuration and code-examples in order to deploy email or sftp integration (Muli will complete)
 
-# Structure
+# Architecture and data flow
 * Sandbox acts like a company
 * Sandbox includes 2 adapters that might act like sites (to serve one or more data-sources)
 
