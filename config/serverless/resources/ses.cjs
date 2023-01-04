@@ -19,7 +19,7 @@ async function buildSesRules({ resolveVariable }) {
         const config = await resolveVariable('self:custom.context')
         const stage = await resolveVariable('self:provider.stage');
         const resources = config.reduce((acc, configItem, index) => {
-
+            if (!configItem.email || configItem.prefix) return acc
             const newResource = {
                 ['SESRule' + (index + 1)]: {
                     "Type": "AWS::SES::ReceiptRule",

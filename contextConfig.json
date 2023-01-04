@@ -3,14 +3,12 @@
         "prefix": "test1",
         "apiKey": "2f6ace0c-e460-45d2-a417-e9fc1e5ff677",
         "email": "test@int.zira.us",
-        "lambdaResource": "AdapterLambdaFunction",
         "lambdaName": "adapter"
     },
     {
         "prefix": "test2",
         "email": "test2@int.zira.us",
         "apiKey": "2f6ace0c-e460-45d2-a417-e9fc1e5ff677",
-        "lambdaResource": "Adapter2LambdaFunction",
         "lambdaName": "adapter2"
     }
 ]

@@ -8,7 +8,8 @@ export const adapter2 = async (event: any, context): Promise<void> => {
     console.log('contentType: ', xlsFile?.contentType)
 
     const parsedXls = readXls(xlsFile.content)
-    console.log('!parsedXls', JSON.stringify(parsedXls))
+    console.log('parsedXls file', JSON.stringify(parsedXls))
+    
 }
 
 export const handler = middy(adapter2)

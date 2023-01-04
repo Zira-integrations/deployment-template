@@ -18,7 +18,7 @@
 		}
 	},
 	"plugins": ["serverless-esbuild", "serverless-plugin-aws-alerts"],
-	"functions": "${file(config/serverless/functions.json)}",
+	"functions": "${file(config/serverless/functions.cjs)}",
 	"custom": {
 		"esbuild": {
 			"config": "./esbuild.config.cjs"

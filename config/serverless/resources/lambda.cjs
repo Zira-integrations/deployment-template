@@ -10,12 +10,13 @@ async function buildLambdas({ resolveVariable }) {
         const accountId = await resolveVariable('self:custom.accountId');
 
         const resources = config.reduce((acc, configItem, index) => {
-
+            if (!configItem.lambdaName) return acc
+            const lambdaResource = `${configItem.lambdaName.charAt(0).toUpperCase() + configItem.lambdaName.slice(1)}LambdaFunction`
             const newResource = {
                 ['LambdaPermission' + (index + 1)]: {
                     "Type": "AWS::Lambda::Permission",
                     "DependsOn": [
-                        configItem.lambdaResource
+                        lambdaResource
                     ],
                     "Properties": {
                         "Principal": "events.amazonaws.com",

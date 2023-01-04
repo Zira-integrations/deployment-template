@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "deploy-dev": "npm explore @lightapp-public/infra -- npx npm run deploy-dev",
-    "deploy-prod": "npm explore @lightapp-public/infra -- npx npm run deploy-prod"
+    "deploy-prod": "npm explore @lightapp-public/infra -- npx npm run deploy-prod",
+    "deploy-with-local-infra": "sh ../infra/mydeploy-dev.sh"
   },
   "dependencies": {
     "@lightapp-public/common": "^1.0.25",
