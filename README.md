@@ -38,6 +38,38 @@ This file is a collection of adapters. Each object configures a corresponding ad
 
 
 3. Create new adapters
+
+```
+import middy from '@middy/core'
+import httpHeaderNormalizer from '@middy/http-header-normalizer'
+import parseEmail from '@lightapp-public/common/lib/parseEmail'
+import readCsv from '@lightapp-public/common/lib/readCsv'
+
+export const adapter = async (event: any): Promise<void> => {
+    console.log('event', JSON.stringify(event))
+    // your code here   
+}
+
+```
+
+# zira/common
+
+Muli to Wright docs for functions inside commomn
+
+
+Example 1: parce csv file
+```
+
+```
+
+Example 2 parse xlsx file
+
+```
+
+```
+
+
+Deloyment
 * Create a new function in functions using adapter.ts as template
 
 Muli to explain that adapter is a lambda function
@@ -50,3 +82,6 @@ Muli to explain that adapter is a lambda function
 
 # AWS services
 * S3 bucket: integrations-data-zira-${stage}
+* need to add instructions regarding access to S3, Email, Cloudwatch
+
+#
