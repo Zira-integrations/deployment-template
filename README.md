@@ -59,7 +59,7 @@ You can define multiple adapters under the same project in order to serve multip
 ## Step 3:  Write your adapters
 
 Adapters are the functions under `/adapters` folder. 
-adapter functions responsible to transform the payload of incoming files or emails in order to post the data to zira data-source
+Adapter functions responsible to transform the payload of incoming files or emails in order to post the data to zira data-source
 
 Example:
 
@@ -84,7 +84,7 @@ export const handler = middy(adapter)
 
 ```
 
-the above example will print the content of csv file attachment of any incoming email sent to the email specified on `context.json`
+The above example will print the content of csv file attachment of any incoming email sent to the email specified on `context.json`
 
 
 # @lightapp-public/common
