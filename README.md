@@ -1,4 +1,4 @@
-# Sandbox
+# Integration template
 This is a template (project) that would  serve as R&amp;D environment
 
 # Structure
