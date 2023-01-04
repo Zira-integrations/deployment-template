@@ -6,8 +6,8 @@ async function buildEvents({ resolveVariable }) {
         const stage = await resolveVariable('self:provider.stage');
         
         const resources = config.reduce((acc, configItem, index) => {
-            if (!configItem.lambdaName || configItem.prefix) return acc
-            const lambdaResource = `${configItem.lambdaName.charAt(0).toUpperCase() + configItem.lambdaName.slice(1)}LambdaFunction`
+            if (!configItem.adapter || !configItem.s3Prefix) return acc
+            const lambdaResource = `${configItem.adapter.charAt(0).toUpperCase() + configItem.adapter.slice(1)}LambdaFunction`
             const newResource = {
                 ['EventRule' + (index + 1)]: {
                     "Type": "AWS::Events::Rule",
@@ -24,7 +24,7 @@ async function buildEvents({ resolveVariable }) {
                                 "object": {
                                     "key": [
                                         {
-                                            "prefix": configItem.prefix
+                                            "prefix": configItem.s3Prefix
                                         }
                                     ]
                                 }

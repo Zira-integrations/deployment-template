@@ -10,8 +10,8 @@ async function buildLambdas({ resolveVariable }) {
         const accountId = await resolveVariable('self:custom.accountId');
 
         const resources = config.reduce((acc, configItem, index) => {
-            if (!configItem.lambdaName) return acc
-            const lambdaResource = `${configItem.lambdaName.charAt(0).toUpperCase() + configItem.lambdaName.slice(1)}LambdaFunction`
+            if (!configItem.adapter) return acc
+            const lambdaResource = `${configItem.adapter.charAt(0).toUpperCase() + configItem.adapter.slice(1)}LambdaFunction`
             const newResource = {
                 ['LambdaPermission' + (index + 1)]: {
                     "Type": "AWS::Lambda::Permission",
@@ -26,7 +26,7 @@ async function buildLambdas({ resolveVariable }) {
                                 {
                                     "ACCOUNT": accountId,
                                     "REGION": region,
-                                    "FUNCTION": `${service}-${stage}-${configItem.lambdaName}`
+                                    "FUNCTION": `${service}-${stage}-${configItem.adapter}`
                                 }
                             ]
                         },

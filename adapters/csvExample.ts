@@ -3,7 +3,7 @@ import httpHeaderNormalizer from '@middy/http-header-normalizer'
 import parseEmail from '@lightapp-public/common/lib/parseEmail'
 import readCsv from '@lightapp-public/common/lib/readCsv'
 
-export const adapter = async (event: any): Promise<void> => {
+export const csvExample = async (event: any): Promise<void> => {
     console.log('event', JSON.stringify(event))
 
     const csvFile = event.email?.attachments[0]
@@ -16,6 +16,6 @@ export const adapter = async (event: any): Promise<void> => {
     }
 }
 
-export const handler = middy(adapter)
+export const handler = middy(csvExample)
     .use(httpHeaderNormalizer())
     .use(parseEmail())

@@ -2,10 +2,10 @@ async function buildFunctions({ resolveVariable }) {
     try {
         const config = await resolveVariable('self:custom.context')
         const functions = config.reduce((acc, configItem) => {
-            if (!configItem.lambdaName) return acc
+            if (!configItem.adapter) return acc
             const newFunction = {
-                [configItem.lambdaName]: {
-                    "handler": `functions/${configItem.lambdaName}.handler`,
+                [configItem.adapter]: {
+                    "handler": `adapters/${configItem.adapter}.handler`,
                 }
             }
             return { ...acc, ...newFunction }

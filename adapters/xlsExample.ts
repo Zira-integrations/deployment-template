@@ -3,7 +3,7 @@ import middy from '@middy/core'
 import httpHeaderNormalizer from '@middy/http-header-normalizer'
 import readXls from '@lightapp-public/common/lib/readXls'
 
-export const adapter2 = async (event: any, context): Promise<void> => {
+export const xlsExample = async (event: any, context): Promise<void> => {
     const xlsFile = event.email?.attachments[0]
     console.log('contentType: ', xlsFile?.contentType)
 
@@ -12,6 +12,6 @@ export const adapter2 = async (event: any, context): Promise<void> => {
     
 }
 
-export const handler = middy(adapter2)
+export const handler = middy(xlsExample)
     .use(httpHeaderNormalizer())
     .use(parseEmail())

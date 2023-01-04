@@ -25,7 +25,7 @@
 		  },
 		"alerts": "${file(config/serverless/alerts.json)}",
 		"accountId": "419687873428",
-		"context": "${file(contextConfig.json)}"
+		"context": "${file(context.json)}"
 	},
 	"resources": "${file(config/serverless/resources.json)}"
 }
