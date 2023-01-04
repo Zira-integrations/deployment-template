@@ -12,9 +12,23 @@ This example project contain the configuration and code-examples in order to dep
 2. modify context.json 
 
 ```
-
+[
+    {
+        "prefix": "test1",
+        "apiKey": "2f6ace0c-e460-45d2-a417-e9fc1e5ff677",
+        "email": "test@int.zira.us",
+        "lambdaName": "adapter"
+    },
+    {
+        "prefix": "test2",
+        "email": "test2@int.zira.us",
+        "apiKey": "2f6ace0c-e460-45d2-a417-e9fc1e5ff677",
+        "lambdaName": "adapter2"
+    }
+]
 ```
 
+Muli to add a table with properties
 
 This file is a collection of adapters. Each object configures a corresponding adapter. This object includes: 
 * `prefix` (Required). Coming files with this prefix will trigger a corresponding adapter.
@@ -23,10 +37,10 @@ This file is a collection of adapters. Each object configures a corresponding ad
 * `apiKey` (Optional). An api key that will be passed into an adapter function
 
 
-# Creation new adapters
+3. Create new adapters
 * Create a new function in functions using adapter.ts as template
-* Add a new config object into contextConfig.json file
 
+Muli to explain that adapter is a lambda function
 
 
 
