@@ -1,5 +1,4 @@
 import middy from '@middy/core'
-import httpHeaderNormalizer from '@middy/http-header-normalizer'
 import parseEmail from '@lightapp-public/common/lib/parseEmail'
 import readCsv from '@lightapp-public/common/lib/readCsv'
 
@@ -17,5 +16,4 @@ export const csvExample = async (event: any): Promise<void> => {
 }
 
 export const handler = middy(csvExample)
-    .use(httpHeaderNormalizer())
     .use(parseEmail())

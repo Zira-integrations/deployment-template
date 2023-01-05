@@ -1,6 +1,5 @@
 import parseEmail from '@lightapp-public/common/lib/parseEmail'
 import middy from '@middy/core'
-import httpHeaderNormalizer from '@middy/http-header-normalizer'
 import readXls from '@lightapp-public/common/lib/readXls'
 
 export const xlsExample = async (event: any, context): Promise<void> => {
@@ -13,5 +12,4 @@ export const xlsExample = async (event: any, context): Promise<void> => {
 }
 
 export const handler = middy(xlsExample)
-    .use(httpHeaderNormalizer())
     .use(parseEmail())
