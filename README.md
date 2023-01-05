@@ -1,4 +1,4 @@
-# Zira Integration template
+# Zira Deployment Template
 
 This example project contains the configuration and code examples to deploy email or SFTP integration
 
