@@ -1,6 +1,6 @@
 import middy from '@middy/core'
-import parseEmail from '@lightapp-public/common/lib/parseEmail'
-import readCsv from '@lightapp-public/common/lib/readCsv'
+import parseEmail from '@zira_integration/common/lib/parseEmail'
+import readCsv from '@zira_integration/common/lib/readCsv'
 
 export const csvExample = async (event: any): Promise<void> => {
     console.log('event', JSON.stringify(event))

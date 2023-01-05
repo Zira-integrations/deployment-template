@@ -6,14 +6,14 @@
   "type": "module",
   "scripts": {
     "clean": "rm -rf .esbuild .serverless",
-    "deploy-dev": "npm run clean && npm explore @lightapp-public/infra -- npx npm run deploy-dev",
-    "deploy-prod": "npm run clean && npm explore @lightapp-public/infra -- npx npm run deploy-prod",
+    "deploy-dev": "npm run clean && npm explore @zira_integration/infra --npx npm run deploy-dev",
+    "deploy-prod": "npm run clean && npm explore @zira_integration/infra -- npx npm run deploy-prod",
     "deploy-with-local-infra": "npm run clean && sh ../infra/mydeploy-dev.sh"
   },
   "dependencies": {
-    "@lightapp-public/common": "^1.0.25",
-    "@lightapp-public/infra": "^1.0.1",
     "@middy/core": "^3.6.2",
+    "@zira_integration/common": "^1.0.0",
+    "@zira_integration/infra": "^1.0.0",
     "got": "^12.5.2"
   },
   "devDependencies": {
