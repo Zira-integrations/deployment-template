@@ -133,7 +133,20 @@ Deployment
 
 
 # Deployment 
-* dev stage: `npx npm run deploy-dev`
-* prod stage `npx npm run deploy-prod`
+
+prerequisites:
+1. Make sure that you have IM User with Admin Access
+2. Set AWS Access key and secret:
+
+```
+$ aws configure
+AWS Access Key ID [None]: <ACCESS_KEY>
+AWS Secret Access Key [None]: <ACCESS_KEY_SECRET>
+Default region name [None]: <REGION>
+Default output format [None]: json
+```
+
+Deployment using CLI:
+* dev stage: `npx npm run deploy`
 
 
