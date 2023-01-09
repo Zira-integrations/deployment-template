@@ -6,15 +6,14 @@
   "type": "module",
   "scripts": {
     "clean": "rm -rf .esbuild .serverless",
-    "deploy-dev": "npm run clean && npm explore @zira_integration/infra --npx npm run deploy-dev",
-    "deploy-prod": "npm run clean && npm explore @zira_integration/infra -- npx npm run deploy-prod",
-    "deploy-with-local-infra": "npm run clean && sh ../infra/mydeploy-dev.sh"
+    "deploy-with-local-infra": "npm run clean && sh ../infra/mydeploy-prod.sh",
+    "deploy-prod": "npm run clean && sh mydeploy-prod.sh"
   },
   "dependencies": {
     "@middy/core": "^3.6.2",
     "@zira_integration/common": "^1.0.0",
-    "@zira_integration/infra": "^1.0.0",
-    "got": "^12.5.2"
+    "got": "^12.5.2",
+    "node-jq": "^2.3.4"
   },
   "devDependencies": {
     "@tsconfig/node16": "^1.0.3",

@@ -11,7 +11,7 @@ export const csvExample = async (event: any): Promise<void> => {
 
     if (csvFile?.contentType === 'text/csv') {
         const data = await readCsv(csvFile.content)
-        console.log('Parsed : ',data)
+        console.log('Parsed: ',data)
     }
 }
 

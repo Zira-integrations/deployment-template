@@ -8,24 +8,24 @@
 		"runtime": "nodejs16.x",
 		"versionFunctions": false,
 		"stage": "${opt:stage, 'prod'}",
-		"region": "${file(config/serverless/region.json):${self:provider.stage}}",
-		"environment": "${file(config/serverless/loadEnvs.cjs)}",
+		"region": "${file(serverless/region.json):${self:provider.stage}}",
+		"environment": "${file(serverless/loadEnvs.cjs)}",
 		"cfnRole": "arn:aws:iam::${self:custom.accountId}:role/DeploymentServiceRole",
-		"iamRoleStatements": "${file(config/serverless/iamRoleStatements.json)}",
+		"iamRoleStatements": "${file(serverless/iamRoleStatements.json)}",
 		"deploymentBucket": {
 			"name": "serverless-deploys-zira-${self:provider.stage}",
 			"blockPublicAccess": "true"
 		}
 	},
 	"plugins": ["serverless-esbuild", "serverless-plugin-aws-alerts"],
-	"functions": "${file(config/serverless/functions.cjs)}",
+	"functions": "${file(serverless/functions.cjs)}",
 	"custom": {
 		"esbuild": {
 			"config": "./esbuild.config.cjs"
 		  },
-		"alerts": "${file(config/serverless/alerts.json)}",
+		"alerts": "${file(serverless/alerts.json)}",
 		"accountId": "419687873428",
-		"context": "${file(context.json)}"
+		"context": "${file(config/context.json)}"
 	},
-	"resources": "${file(config/serverless/resources.json)}"
+	"resources": "${file(serverless/resources.json)}"
 }

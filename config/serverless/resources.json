@@ -1,5 +1,0 @@
-[
-  "${file(config/serverless/resources/lambda.cjs)}",
-  "${file(config/serverless/resources/events.cjs)}",
-  "${file(config/serverless/resources/ses.cjs)}"
-]
