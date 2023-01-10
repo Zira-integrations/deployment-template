@@ -24,7 +24,7 @@ Emails sent to the designated email address will automatically saved under s3 wi
 ## Step 1:  Create new repo based on this example 
 Clone this repo or click the "use this template" button. We recommend to use the company name as repository name as a best practice
 
-## Step 2:  modify `context.json` 
+## Step 2:  modify `config/context.json`
   
 
 ```
@@ -65,7 +65,6 @@ Example:
 
 ``` javascript
 import middy from '@middy/core'
-import httpHeaderNormalizer from '@middy/http-header-normalizer'
 import parseEmail from '@lightapp-public/common/lib/parseEmail'
 import readCsv from '@lightapp-public/common/lib/readCsv'
 
@@ -79,16 +78,50 @@ export const adapter = async (event: any): Promise<void> => {
 }
 
 export const handler = middy(adapter)
-    .use(httpHeaderNormalizer())
     .use(parseEmail())
 
 ```
 
 The above example will print the content of csv file attachment of any incoming email sent to the email specified on `context.json`
 
-Deployment
+# Secrets file
 
-`npx npm run deploy`
+Use `secrets.json` file for storing secret information.
+`secrets.json` is your local  file that doesn't go to git repo next to other  code
+It locates in config folder. Is is a  just JSON object with keys and values.
+To get to your secret key use `process.env.YOUR_SECRET_KEY`
+
+Example:
+
+`secrets.json`
+```
+{
+    "API_KEY": "207a93d6-1cef-5de9-af9a-aef35f6svdfsce",
+    "DEVICE_ID": "1234"
+}
+```
+
+`adapter.ts`
+``` javascript
+const readingData = [{
+        meterId: process.env.DEVICE_ID,
+        values: adaptedValues
+    }]
+ 
+await got.post('https://api.zira.us/public/reading/ids/', { json: readingData, headers: { 'x-api-key': process.env.API_KEY } }).json()
+```
+
+# Usage zira-public API
+
+Use for api call a library called `got`(full spec is here https://github.com/sindresorhus/got) 
+Example:
+``` javascript
+import got from 'got'
+
+ const response = await got.post('https://api.zira.us/public/reading/ids/', {
+             json: readingData, headers: { 'x-api-key': process.env.API_KEY} 
+       }).json()
+```
 
 # Deployment 
 
@@ -105,6 +138,6 @@ Default output format [None]: json
 ```
 
 Deployment using CLI:
-* dev stage: `npx npm run deploy`
+* dev stage: `npm run deploy`
 
 
