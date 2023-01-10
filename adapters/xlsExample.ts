@@ -11,9 +11,11 @@ export const xlsExample = async (event: any, context): Promise<void> => {
     console.log('parsedXls file', JSON.stringify(parsedXls))
 
     // some preparing to post
+
+    const adaptedValues = parsedXls?.[0]?.data?.[0].map((metricId, i) => ({ metricId: String(metricId), value: parsedXls?.[0]?.data?.[1][i] }))
     const readingData = [{
         meterId: process.env.DEVICE_ID,
-        values: parsedXls?.[0]?.data?.[0].map((metricId, i) => ({ metricId: String(metricId), value: parsedXls?.[0]?.data?.[1][i] }))
+        values: adaptedValues
     }]
 
     // post reading

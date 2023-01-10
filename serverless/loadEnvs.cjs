@@ -1,6 +1,5 @@
 
 async function mergeObjs(){
-    const cwd = process.cwd()
     let localEnvs = {} 
     let secrets = {}
     try{
@@ -18,8 +17,8 @@ async function mergeObjs(){
         console.error(err)
     }
 	 
-    if(localEnvs && localEnvs){
-        return { ...localEnvs, ...secrets }
+    if(localEnvs){
+        return { ...localEnvs, ...(secrets || {}) }
     } else{
         return []
     }
