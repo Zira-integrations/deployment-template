@@ -1,4 +1,6 @@
-const extraResources = {}
+const extraResources = {
+    
+}
 
 
 async function buildSesRules({ resolveVariable }) {
@@ -14,7 +16,7 @@ async function buildSesRules({ resolveVariable }) {
                     "Properties": {
                         "RuleSetName": "ruleSet",
                         "Rule": {
-                            "Name": capitalizedLambdaName + "rule" + (index + 1),
+                            "Name": capitalizedLambdaName + "Rule" + (index + 1),
                             "Enabled": true,
                             "ScanEnabled": true,
                             "Recipients": [
