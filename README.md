@@ -24,7 +24,12 @@ Emails sent to the designated email address will automatically saved under s3 wi
 ## Step 1:  Create new repo based on this example 
 Clone this repo or click the "use this template" button. We recommend to use the company name as repository name as a best practice
 
-## Step 2:  modify `config/context.json`
+## Step 2:  Change a package name a service name in `package.json` and change a service name in `serverless.json`
+Go to `package.json` and change package name according to a repo name.
+Then go to `serverless.json` and change  a service name according to a repo name.
+They might be the same.
+
+## Step 3:  modify `config/context.json`
   
 
 ```
@@ -56,7 +61,7 @@ Clone this repo or click the "use this template" button. We recommend to use the
 You can define multiple adapters under the same project in order to serve multiple sites or multiple kinds of integrations 
 
 
-## Step 3:  Write your adapters
+## Step 4:  Write your adapters
 
 Adapters are the functions under `/adapters` folder. 
 Adapter functions responsible to transform the payload of incoming files or emails in order to post the data to zira data-source
