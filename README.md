@@ -25,9 +25,10 @@ Emails sent to the designated email address will automatically saved under s3 wi
 Clone this repo or click the "use this template" button. We recommend to use the company name as repository name as a best practice
 
 ## Step 2:  Change a package name a service name in `package.json` and change a service name in `serverless.json`
-Go to `package.json` and change package name according to a repo name.
-Then go to `serverless.json` and change  a service name according to a repo name.
-They might be the same.
+Go to `package.json` and change package name according to a repo name. <br />
+Then go to `serverless.json` and change  a service name according to a repo name. <br />
+They might be the same. <br />
+Run `npm i` to install packages
 
 ## Step 3:  modify `config/context.json`
   
