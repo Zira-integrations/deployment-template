@@ -11,9 +11,10 @@ async function buildLambdas({ resolveVariable }) {
 
         const resources = config.reduce((acc, configItem, index) => {
             if (!configItem.adapter) return acc
-            const lambdaResource = `${configItem.adapter.charAt(0).toUpperCase() + configItem.adapter.slice(1)}LambdaFunction`
+            const capitalizedLambdaName = configItem.adapter.charAt(0).toUpperCase() + configItem.adapter.slice(1)
+            const lambdaResource = `${capitalizedLambdaName}LambdaFunction`
             const newResource = {
-                ['LambdaPermission' + (index + 1)]: {
+                [capitalizedLambdaName + 'LambdaPermission']: {
                     "Type": "AWS::Lambda::Permission",
                     "DependsOn": [
                         lambdaResource

@@ -7,9 +7,10 @@ async function buildEvents({ resolveVariable }) {
         
         const resources = config.reduce((acc, configItem, index) => {
             if (!configItem.adapter || !configItem.s3Prefix) return acc
-            const lambdaResource = `${configItem.adapter.charAt(0).toUpperCase() + configItem.adapter.slice(1)}LambdaFunction`
+            const capitalizedLambdaName = configItem.adapter.charAt(0).toUpperCase() + configItem.adapter.slice(1)
+            const lambdaResource = `${capitalizedLambdaName}LambdaFunction`
             const newResource = {
-                ['EventRule' + (index + 1)]: {
+                [capitalizedLambdaName + 'EventRule']: {
                     "Type": "AWS::Events::Rule",
                     "Properties": {
                         "Description": "Catches S3 ObjectCreated events",

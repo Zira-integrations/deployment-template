@@ -1,17 +1,4 @@
-const extraResources = {
-    "DomainIdentityResource": {
-        "Type": "AWS::SES::EmailIdentity",
-        "Properties": {
-            "EmailIdentity": "int.zira.us"
-        }
-    },
-    "ReceiptRuleSet": {
-        "Type": "AWS::SES::ReceiptRuleSet",
-        "Properties": {
-            "RuleSetName": "ruleSet"
-        }
-    }
-}
+const extraResources = {}
 
 
 async function buildSesRules({ resolveVariable }) {
@@ -20,13 +7,14 @@ async function buildSesRules({ resolveVariable }) {
         const stage = await resolveVariable('self:provider.stage');
         const resources = config.reduce((acc, configItem, index) => {
             if (!configItem.emailPrefix || !configItem.s3Prefix) return acc
+            const capitalizedLambdaName = configItem.adapter.charAt(0).toUpperCase() + configItem.adapter.slice(1)
             const newResource = {
-                ['SESRule' + (index + 1)]: {
+                [capitalizedLambdaName + 'SESRule']: {
                     "Type": "AWS::SES::ReceiptRule",
                     "Properties": {
-                        "RuleSetName": extraResources.ReceiptRuleSet.Properties.RuleSetName,
+                        "RuleSetName": "ruleSet",
                         "Rule": {
-                            "Name": "rule" + (index + 1),
+                            "Name": capitalizedLambdaName + "rule" + (index + 1),
                             "Enabled": true,
                             "ScanEnabled": true,
                             "Recipients": [

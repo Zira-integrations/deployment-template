@@ -11,10 +11,9 @@ async function mergeObjs(){
     }
     try{
         secrets = (await import("../config/secrets.json", { assert: { type: "json" } })).default
-        console.log('secrets', JSON.stringify(secrets))
 
     } catch(err){
-        console.error(err)
+        console.log('no secrets file')
     }
 	 
     if(localEnvs){
