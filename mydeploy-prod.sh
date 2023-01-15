@@ -9,7 +9,7 @@ else
 	modulePrefix="."
 fi
 
-MODULE_ENV="dev"
+MODULE_ENV="prod"
 
 echo 'Deploying...'
 if [ -n "$FUNCTION_NAME" ]; then
