@@ -8,5 +8,9 @@
         "s3Prefix": "xlsExample/emails",
         "emailPrefix": "test2@int.zira.us",
         "adapter": "xlsExample"
+    },
+    {
+        "s3Prefix": "manualUploadExample/manual",
+        "adapter": "manualUploadExample"
     }
 ]
