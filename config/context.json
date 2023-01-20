@@ -1,16 +1,16 @@
 [
     {
-        "s3Prefix": "csvExample/emails",
-        "emailPrefix": "test",
+        "s3Prefix": "ExampleSite/Emails",
+        "emailPrefix": "examplesite",
         "adapter": "csvExample"
     },
     {
-        "s3Prefix": "xlsExample/emails",
-        "emailPrefix": "test2",
+        "s3Prefix": "ExampleSite/Emails",
+        "emailPrefix": "examplesite",
         "adapter": "xlsExample"
     },
     {
-        "s3Prefix": "manualUploadExample/manual",
+        "s3Prefix": "ExampleSite/manual",
         "adapter": "manualUploadExample"
     }
 ]
