@@ -49,8 +49,8 @@ Run `npm i` to install packages
 ]
 ```
 ### Best Practices:
-- s3: Site/UploadType (ex. CypressGrove/Emails)
-- email: site (ex. cypressgrove)
+- s3Prefix: Site/UploadType (ex. CypressGrove/Emails)
+- emailPrefix: Site (ex. cypressgrove)
 
 
 
