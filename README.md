@@ -48,7 +48,9 @@ Run `npm i` to install packages
     ...
 ]
 ```
-
+### Best Practices:
+- s3: site/integration-name/upload-type (ex. cypress-grove/curd-production/emails)
+- email: site-integrationName (ex. cypress-curdProduction)
 
 
 
