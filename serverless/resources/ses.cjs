@@ -1,5 +1,5 @@
 const extraResources = {
-    
+
 }
 
 
@@ -20,7 +20,7 @@ async function buildSesRules({ resolveVariable }) {
                             "Enabled": true,
                             "ScanEnabled": true,
                             "Recipients": [
-                                configItem.emailPrefix
+                                configItem.emailPrefix + "@int.zira.us"
                             ],
                             "Actions": [
                                 {

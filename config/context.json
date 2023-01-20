@@ -1,12 +1,12 @@
 [
     {
         "s3Prefix": "csvExample/emails",
-        "emailPrefix": "test@int.zira.us",
+        "emailPrefix": "test",
         "adapter": "csvExample"
     },
     {
         "s3Prefix": "xlsExample/emails",
-        "emailPrefix": "test2@int.zira.us",
+        "emailPrefix": "test2",
         "adapter": "xlsExample"
     },
     {
