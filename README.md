@@ -11,7 +11,7 @@ This example project contains the configuration and code examples to deploy emai
 By cloning this repo and changing couple of variables, developers can safely deploy below resources:
 - Mailbox with designated email address
 - S3 bucket with specified data prefix
-- Lambda function that run your custom parsing and data-manipulation code  
+- Lambda function that run your custom parsing and data-manipulation code
 
 # Data flow
 
@@ -21,7 +21,7 @@ Emails sent to the designated email address will automatically saved under s3 wi
 
 # Set up
 
-## Step 1:  Create new repo based on this example 
+## Step 1:  Create new repo based on this example
 Clone this repo or click the "use this template" button. We recommend to use the company name as repository name as a best practice
 
 ## Step 2:  Change a package name a service name in `package.json` and change a service name in `serverless.json`
@@ -31,7 +31,7 @@ They might be the same. <br />
 Run `npm i` to install packages
 
 ## Step 3:  modify `config/context.json`
-  
+
 
 ```
 [
@@ -48,23 +48,25 @@ Run `npm i` to install packages
     ...
 ]
 ```
-
+### Best Practices:
+- s3Prefix: Site/UploadType (ex. CypressGrove/Emails)
+- emailPrefix: Site (ex. cypressgrove)
 
 
 
 | Option        | Required | Description                                                            |
 |---------------|----------|------------------------------------------------------------------------|
-| `s3Prefix`      | true     | Every file uploaded with this prefix will trigger the adapter function |
+| `s3Prefix`     | true     | Every file uploaded with this prefix will trigger the adapter function   |
 | `adapter`     | true     | The name of the adapter function under `adapters` folder               |
-| `emailPrefix` | false    | Will create a mailbox with this prefix under @int.zira.us domain             |
+| `emailPrefix`  | false    | Will create a mailbox with this prefix under @int.zira.us domain        |
 
 
-You can define multiple adapters under the same project in order to serve multiple sites or multiple kinds of integrations 
+You can define multiple adapters under the same project in order to serve multiple sites or multiple kinds of integrations
 
 
 ## Step 4:  Write your adapters
 
-Adapters are the functions under `/adapters` folder. 
+Adapters are the functions under `/adapters` folder.
 Adapter functions responsible to transform the payload of incoming files or emails in order to post the data to zira data-source
 
 Example:
@@ -113,23 +115,23 @@ const readingData = [{
         meterId: process.env.DEVICE_ID,
         values: adaptedValues
     }]
- 
+
 await got.post('https://api.zira.us/public/reading/ids/', { json: readingData, headers: { 'x-api-key': process.env.API_KEY } }).json()
 ```
 
 # Usage zira-public API
 
-Use for api call a library called `got`(full spec is here https://github.com/sindresorhus/got) 
+Use for api call a library called `got`(full spec is here https://github.com/sindresorhus/got)
 Example:
 ``` javascript
 import got from 'got'
 
  const response = await got.post('https://api.zira.us/public/reading/ids/', {
-             json: readingData, headers: { 'x-api-key': process.env.API_KEY} 
+             json: readingData, headers: { 'x-api-key': process.env.API_KEY}
        }).json()
 ```
 
-# Deployment 
+# Deployment
 
 prerequisites:
 1. Make sure that you have IM User with Admin Access
@@ -145,5 +147,3 @@ Default output format [None]: json
 
 Deployment using CLI:
 * dev stage: `npm run deploy`
-
-
