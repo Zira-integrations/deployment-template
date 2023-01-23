@@ -6,6 +6,7 @@ async function buildFunctions({ resolveVariable }) {
             const newFunction = {
                 [configItem.adapter]: {
                     "handler": `adapters/${configItem.adapter}.handler`,
+                    "timeout": 300
                 }
             }
             return { ...acc, ...newFunction }
