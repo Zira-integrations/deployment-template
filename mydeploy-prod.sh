@@ -1,6 +1,6 @@
 export FUNCTION_NAME=$1
 MODULE_NAME=$2
-export AWS_PROFILE='integrations'
+# export AWS_PROFILE='integrations'
 if [ -n "$2" ]; then
 	scriptsPrefix="./"
 	modulePrefix="./src/${MODULE_NAME}"
