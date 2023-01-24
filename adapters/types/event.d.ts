@@ -1,7 +1,7 @@
 export interface EmailEvent {
   email: EmailFile
   addSuccess(): void
-  addFailure(): void
+  addFailure(failData: any): void
 }
 
 interface EmailFile {
