@@ -5,6 +5,12 @@ export interface EmailEvent {
 }
 
 interface EmailFile {
-  attachments: Array<any>
+  attachments: Array<Attachment>
+  headers: Map<string, any>
+  [x: string]: any
+}
+
+interface Attachment {
+  content: any
   [x: string]: any
 }
