@@ -1,6 +1,6 @@
-import getS3Object from '@zira_integration/common/lib/getS3Object'
 import middy from '@middy/core'
-import readXls from '@zira_integration/common/lib/readXls'
+import readXls from 'zira_integ/lib/readXls'
+import getS3Object from 'zira_integ/lib/getS3Object'
 
 
 export const manualUploadExample = async (event: any): Promise<void> => {

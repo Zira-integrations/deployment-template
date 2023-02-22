@@ -1,18 +1,19 @@
-import parseEmail from '@zira_integration/common/lib/parseEmail'
 import middy from '@middy/core'
-import readXls from '@zira_integration/common/lib/readXls'
+import parseEmail from 'zira_integ/lib/parseEmail'
+import readXls from 'zira_integ/lib/readXls'
+import logger from 'zira_integ/lib/logger'
 import got from 'got'
 import { EmailEvent } from './types/event'
 
 export const xlsExample = async (event: EmailEvent, context): Promise<void> => {
     const xlsFile = event.email?.attachments[0]
     console.log('contentType: ', xlsFile?.contentType)
-    const parsedXls: any = readXls(xlsFile.content)
+    const parsedXls = readXls(xlsFile.content)
     console.log('parsedXls file', JSON.stringify(parsedXls))
 
     // some preparing to post
 
-    const adaptedValues = parsedXls?.[0]?.data?.[0].map((metricId, i) => ({ metricId: String(metricId), value: parsedXls?.[0]?.data?.[1][i] }))
+    const adaptedValues = parsedXls[0].map((metricId, i) => ({ metricId: String(metricId), value: parsedXls[1][i] }))
     const readingData = [{
         meterId: process.env.DEVICE_ID,
         values: adaptedValues
@@ -23,13 +24,13 @@ export const xlsExample = async (event: EmailEvent, context): Promise<void> => {
         const response = await got.post('https://api.zira.us/public/reading/ids/', {
              json: readingData, headers: { 'x-api-key': process.env.API_KEY
         } }).json()
-        console.log('response', JSON.stringify(response))
-
+        if (response) event.addSuccess();
     } catch (error) {
-        console.error(error)
+        event.addFailure('Error uploading to Zira', readingData)
     }
 
 }
 
 export const handler = middy(xlsExample)
     .use(parseEmail())
+    .use(logger())
