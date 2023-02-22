@@ -1,6 +1,6 @@
 {
   "name": "sandbox",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "This is a template (project) that would serve as R&D environment",
   "main": "esbuild.config.js",
   "type": "module",
@@ -11,9 +11,9 @@
   },
   "dependencies": {
     "@middy/core": "^3.6.2",
-    "@zira_integration/common": "^1.0.2",
     "got": "^12.5.2",
-    "node-jq": "^2.3.4"
+    "node-jq": "^2.3.4",
+    "zira_integ": "^1.2.0"
   },
   "devDependencies": {
     "@tsconfig/node16": "^1.0.3",
