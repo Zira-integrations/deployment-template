@@ -16,12 +16,12 @@ async function buildSesRules ({ resolveVariable }) {
         [sesName + 'SESRule']: {
           Type: 'AWS::SES::ReceiptRule',
           Properties: {
-            RuleSetName: 'ruleSet',
+            RuleSetName: `${stage == 'dev' ? 'dev-' : ''}ruleSet`,
             Rule: {
               Name: sesName + 'Rule' + (index + 1),
               Enabled: true,
               ScanEnabled: true,
-              Recipients: [configItem.emailPrefix + '@int.zira.us'],
+              Recipients: [configItem.emailPrefix + `@${stage == 'dev' ? 'dev.' : ''}int.zira.us`],
               Actions: [
                 {
                   S3Action: {

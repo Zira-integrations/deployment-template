@@ -7,7 +7,8 @@
   "scripts": {
     "clean": "rm -rf .esbuild .serverless",
     "deploy-with-local-infra": "npm run clean && sh ../infra/mydeploy-prod.sh",
-    "deploy": "npm run clean && sh mydeploy-prod.sh"
+    "deploy-prod": "npm run clean && sh mydeploy-prod.sh",
+    "deploy-dev": "npm run clean && sh mydeploy-dev.sh"
   },
   "dependencies": {
     "@middy/core": "^3.6.2",

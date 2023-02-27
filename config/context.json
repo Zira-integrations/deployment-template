@@ -12,5 +12,10 @@
     {
         "s3Prefix": "ExampleSite/manual",
         "adapter": "manualUploadExample"
-    }
+    },
+    {
+        "apiPrefix": "ExampleSite",
+        "adapter": "apiExample",
+        "methods": ["POST"]
+    } 
 ]
