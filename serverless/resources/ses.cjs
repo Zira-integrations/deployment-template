@@ -16,7 +16,7 @@ async function buildSesRules ({ resolveVariable }) {
         [sesName + 'SESRule']: {
           Type: 'AWS::SES::ReceiptRule',
           Properties: {
-            RuleSetName: `${stage}-ruleSet`,
+            RuleSetName: `${stage == 'dev' ? 'dev-' : ''}ruleSet`,
             Rule: {
               Name: sesName + 'Rule' + (index + 1),
               Enabled: true,
