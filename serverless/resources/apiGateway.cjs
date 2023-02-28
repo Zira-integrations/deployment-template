@@ -47,8 +47,9 @@ async function buildEvents({ resolveVariable }) {
                     "IntegrationHttpMethod": configItem.methods[i],
                     "Uri": {
                       "Fn::Sub": [
-                        `arn:aws:apigateway:${region}:lambda:path/2015-03-31/functions/arn:aws:lambda:${region}:${accountId}:function:${configItem.adapter}/invocations`,
+                        'arn:aws:apigateway:${REGION}:lambda:path/2015-03-31/functions/arn:aws:lambda:${REGION}:${ACCOUNT}:function:${FUNCTION}/invocations',
                         {
+                          "ACCOUNT": accountId,
                           "REGION": region,
                           "FUNCTION": `${service}-${stage}-${configItem.adapter}`
                         }
