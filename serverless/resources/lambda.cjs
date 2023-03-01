@@ -13,8 +13,8 @@ async function buildLambdas({ resolveVariable }) {
             if (!configItem.adapter) return acc
             const capitalizedLambdaName = configItem.adapter.charAt(0).toUpperCase() + configItem.adapter.slice(1)
             const lambdaResource = `${capitalizedLambdaName}LambdaFunction`
-            const newResource = {
-                [capitalizedLambdaName + 'LambdaPermission']: {
+            const permissions = {
+                [capitalizedLambdaName + 'EventsLambdaPermission']: {
                     "Type": "AWS::Lambda::Permission",
                     "DependsOn": [
                         lambdaResource
@@ -35,7 +35,29 @@ async function buildLambdas({ resolveVariable }) {
                     }
                 }
             }
-            return { ...acc, ...newResource }
+            if(configItem.apiPrefix){
+                permissions[capitalizedLambdaName + 'ApiGatewayLambdaPermission'] = {
+                    "Type": "AWS::Lambda::Permission",
+                    "DependsOn": [
+                        lambdaResource
+                    ],
+                    "Properties": {
+                        "Principal": "apigateway.amazonaws.com",
+                        "FunctionName": {
+                            "Fn::Sub": [
+                                "arn:aws:lambda:${REGION}:${ACCOUNT}:function:${FUNCTION}",
+                                {
+                                    "ACCOUNT": accountId,
+                                    "REGION": region,
+                                    "FUNCTION": `${service}-${stage}-${configItem.adapter}`
+                                }
+                            ]
+                        },
+                        "Action": "lambda:InvokeFunction"
+                    }
+                }
+            }
+            return { ...acc, ...permissions }
         }, {})
 
         return {
