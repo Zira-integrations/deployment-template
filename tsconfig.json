@@ -16,12 +16,7 @@
 		"target": "es2021"
 	},
 	"include": [
-		"api/**/*",
-		"config/**/*",
-		"middleware/**/*",
-		"utils/**/*",
-		"./index.ts",
-		"model/**/*"
+		"adapters/*"
 	],
 	"allowJs": false
 }
