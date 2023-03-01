@@ -10,7 +10,7 @@ async function buildEvents({ resolveVariable }) {
       const accountId = await resolveVariable('self:custom.accountId');
       const resources = config.reduce((acc, configItem, index) => {
           if (!configItem.adapter || !configItem.apiPrefix) return acc
-          
+
           const newResource = {
             [configItem.adapter]: {
               "Type": "AWS::ApiGateway::Resource",
@@ -26,7 +26,7 @@ async function buildEvents({ resolveVariable }) {
               }
             }
           }
-          
+
           for(const i in configItem.methods){
             methods[configItem.adapter+configItem.methods[i]+'Method'] =
             {
@@ -101,7 +101,7 @@ async function buildEvents({ resolveVariable }) {
           return { ...acc, ...newResource, ...methods, ...newApiKey, ...newUsagePlanKey}
       }, {})
       let extraResources = {}
-      if(resources.length > 0){
+      if(Object.keys(resources).length > 0){
         extraResources = {
           "ApiGatewayRestApi" : {
             "Type": "AWS::ApiGateway::RestApi",
@@ -176,8 +176,8 @@ async function buildEvents({ resolveVariable }) {
           }
         }
       }
-      
-    
+
+
       return {
           Resources: {
               ...resources,
