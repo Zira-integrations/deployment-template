@@ -1,106 +1,108 @@
 
 
 async function buildEvents({ resolveVariable }) {
-    try {
-        const methods = {}
-        const config = await resolveVariable('self:custom.context')
-        const stage = await resolveVariable('self:provider.stage');
-        const region = await resolveVariable('self:provider.region');
-        const service = await resolveVariable('self:service');
-        const accountId = await resolveVariable('self:custom.accountId');
-        const resources = config.reduce((acc, configItem, index) => {
-            if (!configItem.adapter || !configItem.apiPrefix) return acc
-            
-            const newResource = {
-              [configItem.adapter]: {
-                "Type": "AWS::ApiGateway::Resource",
-                "DependsOn": ["ApiGatewayRestApi"],
-                "Properties": {
-                  "RestApiId": {
-                    "Ref": "ApiGatewayRestApi"
-                  },
-                  "ParentId": {
-                    "Fn::GetAtt": ["ApiGatewayRestApi", "RootResourceId"]
-                  },
-                  "PathPart": `${configItem.adapter}`
-                }
+  try {
+      const methods = {}
+      const config = await resolveVariable('self:custom.context')
+      const stage = await resolveVariable('self:provider.stage');
+      const region = await resolveVariable('self:provider.region');
+      const service = await resolveVariable('self:service');
+      const accountId = await resolveVariable('self:custom.accountId');
+      const resources = config.reduce((acc, configItem, index) => {
+          if (!configItem.adapter || !configItem.apiPrefix) return acc
+          
+          const newResource = {
+            [configItem.adapter]: {
+              "Type": "AWS::ApiGateway::Resource",
+              "DependsOn": ["ApiGatewayRestApi"],
+              "Properties": {
+                "RestApiId": {
+                  "Ref": "ApiGatewayRestApi"
+                },
+                "ParentId": {
+                  "Fn::GetAtt": ["ApiGatewayRestApi", "RootResourceId"]
+                },
+                "PathPart": `${configItem.adapter}`
               }
             }
-            
-            for(const i in configItem.methods){
-              methods[configItem.adapter+configItem.methods[i]+'Method'] =
-              {
-                "Type": "AWS::ApiGateway::Method",
-                "DependsOn": ["ApiGatewayRestApi", configItem.adapter],
-                "Properties": {
-                  "ApiKeyRequired": true,
-                  "AuthorizationType": "NONE",
-                  "HttpMethod": configItem.methods[i],
-                  "ResourceId": {
-                    "Ref": configItem.adapter
-                  },
-                  "RestApiId": {
-                    "Ref": "ApiGatewayRestApi"
-                  },
-                  "Integration": {
-                    "Type": "AWS_PROXY",
-                    "IntegrationHttpMethod": configItem.methods[i],
-                    "Uri": {
-                      "Fn::Sub": [
-                        'arn:aws:apigateway:${REGION}:lambda:path/2015-03-31/functions/arn:aws:lambda:${REGION}:${ACCOUNT}:function:${FUNCTION}/invocations',
-                        {
-                          "ACCOUNT": accountId,
-                          "REGION": region,
-                          "FUNCTION": `${service}-${stage}-${configItem.adapter}`
-                        }
-                      ]
-                    }
-                  }
-                }
-              }
-            }
-            const newApiKey = {
-              [configItem.adapter+"ApiKey"]: {
-                "Type": "AWS::ApiGateway::ApiKey",
-                "DependsOn": [
-                  "ApiGatewayDeployment"
-                ],
-                "Properties": {
-                  "Name": `${service}-${configItem.adapter}`,
-                  "Description": `${service} - ${configItem.adapter} adapter`,
-                  "Enabled": true,
-                  "StageKeys": [
-                    {
-                      "RestApiId": {
-                          "Ref": "ApiGatewayRestApi"
-                      },
-                      "StageName": {
-                        "Ref": "ApiGatewayStage"
+          }
+          
+          for(const i in configItem.methods){
+            methods[configItem.adapter+configItem.methods[i]+'Method'] =
+            {
+              "Type": "AWS::ApiGateway::Method",
+              "DependsOn": ["ApiGatewayRestApi", configItem.adapter],
+              "Properties": {
+                "ApiKeyRequired": true,
+                "AuthorizationType": "NONE",
+                "HttpMethod": configItem.methods[i],
+                "ResourceId": {
+                  "Ref": configItem.adapter
+                },
+                "RestApiId": {
+                  "Ref": "ApiGatewayRestApi"
+                },
+                "Integration": {
+                  "Type": "AWS_PROXY",
+                  "IntegrationHttpMethod": configItem.methods[i],
+                  "Uri": {
+                    "Fn::Sub": [
+                      'arn:aws:apigateway:${REGION}:lambda:path/2015-03-31/functions/arn:aws:lambda:${REGION}:${ACCOUNT}:function:${FUNCTION}/invocations',
+                      {
+                        "ACCOUNT": accountId,
+                        "REGION": region,
+                        "FUNCTION": `${service}-${stage}-${configItem.adapter}`
                       }
-                    }
-                  ]
-                }
-              }
-            }
-            const newUsagePlanKey = {
-              [configItem.adapter+"UsagePlanKey"]: {
-                "DependsOn": ["ApiGatewayUsagePlan"],
-                "Type": "AWS::ApiGateway::UsagePlanKey",
-                "Properties": {
-                  "KeyId": {
-                    "Ref": `${configItem.adapter}ApiKey`
-                  },
-                  "KeyType": "API_KEY",
-                  "UsagePlanId": {
-                    "Ref": "ApiGatewayUsagePlan"
+                    ]
                   }
                 }
               }
             }
+          }
+          const newApiKey = {
+            [configItem.adapter+"ApiKey"]: {
+              "Type": "AWS::ApiGateway::ApiKey",
+              "DependsOn": [
+                "ApiGatewayDeployment"
+              ],
+              "Properties": {
+                "Name": `${service}-${configItem.adapter}`,
+                "Description": `${service} - ${configItem.adapter} adapter`,
+                "Enabled": true,
+                "StageKeys": [
+                  {
+                    "RestApiId": {
+                        "Ref": "ApiGatewayRestApi"
+                    },
+                    "StageName": {
+                      "Ref": "ApiGatewayStage"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+          const newUsagePlanKey = {
+            [configItem.adapter+"UsagePlanKey"]: {
+              "DependsOn": ["ApiGatewayUsagePlan"],
+              "Type": "AWS::ApiGateway::UsagePlanKey",
+              "Properties": {
+                "KeyId": {
+                  "Ref": `${configItem.adapter}ApiKey`
+                },
+                "KeyType": "API_KEY",
+                "UsagePlanId": {
+                  "Ref": "ApiGatewayUsagePlan"
+                }
+              }
+            }
+          }
 
-            return { ...acc, ...newResource, ...methods, ...newApiKey, ...newUsagePlanKey}
-        }, {})
-        const extraResources = {
+          return { ...acc, ...newResource, ...methods, ...newApiKey, ...newUsagePlanKey}
+      }, {})
+      let extraResources = {}
+      if(resources.length > 0){
+        extraResources = {
           "ApiGatewayRestApi" : {
             "Type": "AWS::ApiGateway::RestApi",
             "Properties": {
@@ -173,16 +175,18 @@ async function buildEvents({ resolveVariable }) {
             }
           }
         }
+      }
       
-        return {
-            Resources: {
-                ...resources,
-                ...extraResources
-            }
-        }
-    } catch (err) {
-        console.error(err)
-    }
+    
+      return {
+          Resources: {
+              ...resources,
+              ...extraResources
+          }
+      }
+  } catch (err) {
+      console.error(err)
+  }
 }
 
 module.exports = buildEvents
