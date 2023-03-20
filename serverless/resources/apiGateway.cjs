@@ -115,7 +115,7 @@ async function buildEvents({ resolveVariable }) {
             "DependsOn": ["ApiGatewayRestApi"],
             "Properties": {
               "BasePath": service,
-              "DomainName": `${stage == 'dev' ? 'dev.' : ''}api.int.zira.us`,
+              "DomainName": `${stage == 'dev' ? 'dev.' : ''}zira.solutions`,
               "RestApiId": {
                 "Ref": "ApiGatewayRestApi"
               },

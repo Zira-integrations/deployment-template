@@ -2,5 +2,6 @@
   "${file(serverless/resources/lambda.cjs)}",
   "${file(serverless/resources/events.cjs)}",
   "${file(serverless/resources/ses.cjs)}",
-  "${file(serverless/resources/apiGateway.cjs)}"
+  "${file(serverless/resources/apiGateway.cjs)}",
+  "${file(serverless/resources/logs.cjs)}"
 ]
