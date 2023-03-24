@@ -12,5 +12,6 @@ interface EmailFile {
 
 interface Attachment {
   content: any
+  filename: string
   [x: string]: any
 }
