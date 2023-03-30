@@ -14,7 +14,7 @@
     "@middy/core": "^3.6.2",
     "got": "^12.5.2",
     "node-jq": "^2.3.4",
-    "zira_integ": "^1.2.0"
+    "zira_integ": "^1.2.2"
   },
   "devDependencies": {
     "@tsconfig/node16": "^1.0.3",
