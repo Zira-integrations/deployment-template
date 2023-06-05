@@ -15,14 +15,3 @@ interface Attachment {
   filename: string
   [x: string]: any
 }
-
-export interface APIEvent {
-  body: string
-}
-
-interface Values {
-  Cases: string
-  'PTI Code': string
-  'PO Number': string
-  'Pallet Code': string
-}
