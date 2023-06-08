@@ -66,8 +66,8 @@ async function buildEvents({ resolveVariable }) {
                 "ApiGatewayDeployment"
               ],
               "Properties": {
-                "Name": `${service}-${configItem.adapter}`,
-                "Description": `${service} - ${configItem.adapter} adapter`,
+                "Name": `${stage === 'dev' ? 'dev-' : ''}${service}-${configItem.adapter}`,
+                "Description": `${stage} ${service} - ${configItem.adapter} adapter`,
                 "Enabled": true,
                 "StageKeys": [
                   {
