@@ -1,12 +1,12 @@
 [
     {
         "s3Prefix": "ExampleSite/Emails",
-        "emailPrefix": "ExampleSite",
+        "emailPrefix": "example-site",
         "adapter": "csvExample"
     },
     {
         "s3Prefix": "ExampleSite/Emails",
-        "emailPrefix": "ExampleSite",
+        "emailPrefix": "example-site",
         "adapter": "xlsExample"
     },
     {
@@ -17,5 +17,5 @@
         "apiPrefix": "ExampleSite",
         "adapter": "apiExample",
         "methods": ["POST"]
-    } 
+    }
 ]
