@@ -15,7 +15,7 @@
     },
     {
         "apiPrefix": "ExampleSite",
-        "adapter": "apiExample",
+        "adapter": "ExampleSite",
         "methods": ["POST"]
     }
 ]
