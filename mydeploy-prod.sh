@@ -11,6 +11,7 @@ fi
 
 MODULE_ENV="prod"
 
+echo $(date +%Y%m%d_%H%M%S)
 echo 'Deploying...'
 if [ -n "$FUNCTION_NAME" ]; then
 	cd "$modulePrefix"
