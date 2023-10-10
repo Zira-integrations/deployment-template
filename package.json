@@ -12,8 +12,9 @@
   },
   "dependencies": {
     "@middy/core": "^3.6.2",
-    "got": "^12.5.2",
+    "got": "^13.0.0",
     "node-jq": "^2.3.4",
+    "xlsx": "^0.18.5",
     "zira_integ": "^1.2.2"
   },
   "devDependencies": {
@@ -23,7 +24,7 @@
     "esbuild": "^0.15.12",
     "esbuild-node-externals": "^1.5.0",
     "node": "16.18.0",
-    "npm": "8.19.2",
+    "npm": "^10.2.0",
     "serverless": "^3.19.0",
     "serverless-esbuild": "^1.33.0",
     "serverless-plugin-aws-alerts": "^1.7.5",
