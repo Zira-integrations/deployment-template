@@ -11,7 +11,7 @@ fi
 
 MODULE_ENV="dev"
 
-echo $(date +%Y%m%d_%H%M%S)
+echo $(date +"%Y-%m-%d %H:%M:%S")
 echo 'Deploying...'
 if [ -n "$FUNCTION_NAME" ]; then
 	cd "$modulePrefix"
@@ -20,3 +20,4 @@ else
 	echo '2'
 	NPM_TOKEN=${NPM_TOKEN} npx sls deploy --force --stage ${MODULE_ENV}
 fi
+echo $(date +"%Y-%m-%d %H:%M:%S")
