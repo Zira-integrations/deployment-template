@@ -5,5 +5,5 @@ module.exports = (serverless) => ({
   target: 'node16',
   keepOutputDirectory: true,
   platform: 'node',
-  loader: { '.node': 'file' },
+  loader: { '.node': 'file' }
 })

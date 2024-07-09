@@ -117,14 +117,14 @@ Example:
 const readingData = [
   {
     meterId: process.env.DEVICE_ID,
-    values: adaptedValues,
-  },
+    values: adaptedValues
+  }
 ]
 
 await got
   .post('https://api.zira.us/public/reading/ids/', {
     json: readingData,
-    headers: { 'x-api-key': process.env.API_KEY },
+    headers: { 'x-api-key': process.env.API_KEY }
   })
   .json()
 ```
@@ -140,7 +140,7 @@ import got from 'got'
 const response = await got
   .post('https://api.zira.us/public/reading/ids/', {
     json: readingData,
-    headers: { 'x-api-key': process.env.API_KEY },
+    headers: { 'x-api-key': process.env.API_KEY }
   })
   .json()
 ```

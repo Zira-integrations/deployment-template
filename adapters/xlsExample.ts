@@ -15,13 +15,13 @@ export const xlsExample = async (event: EmailEvent, context): Promise<void> => {
 
   const adaptedValues = parsedXls[0].map((metricId, i) => ({
     metricId: String(metricId),
-    value: parsedXls[1][i],
+    value: parsedXls[1][i]
   }))
   const readingData = [
     {
       meterId: process.env.DEVICE_ID,
-      values: adaptedValues,
-    },
+      values: adaptedValues
+    }
   ]
 
   // post reading
@@ -29,7 +29,7 @@ export const xlsExample = async (event: EmailEvent, context): Promise<void> => {
     const response = await got
       .post('https://api.zira.us/public/reading/ids/', {
         json: readingData,
-        headers: { 'x-api-key': process.env.API_KEY },
+        headers: { 'x-api-key': process.env.API_KEY }
       })
       .json()
     if (response) event.addSuccess()

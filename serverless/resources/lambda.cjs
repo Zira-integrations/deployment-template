@@ -25,13 +25,13 @@ async function buildLambdas({ resolveVariable }) {
                 {
                   ACCOUNT: accountId,
                   REGION: region,
-                  FUNCTION: `${service}-${stage}-${configItem.adapter}`,
-                },
-              ],
+                  FUNCTION: `${service}-${stage}-${configItem.adapter}`
+                }
+              ]
             },
-            Action: 'lambda:InvokeFunction',
-          },
-        },
+            Action: 'lambda:InvokeFunction'
+          }
+        }
       }
       if (configItem.apiPrefix) {
         permissions[capitalizedLambdaName + 'ApiGatewayLambdaPermission'] = {
@@ -45,12 +45,12 @@ async function buildLambdas({ resolveVariable }) {
                 {
                   ACCOUNT: accountId,
                   REGION: region,
-                  FUNCTION: `${service}-${stage}-${configItem.adapter}`,
-                },
-              ],
+                  FUNCTION: `${service}-${stage}-${configItem.adapter}`
+                }
+              ]
             },
-            Action: 'lambda:InvokeFunction',
-          },
+            Action: 'lambda:InvokeFunction'
+          }
         }
       }
       return { ...acc, ...permissions }
@@ -59,8 +59,8 @@ async function buildLambdas({ resolveVariable }) {
     return {
       Resources: {
         ...resources,
-        ...extraResources,
-      },
+        ...extraResources
+      }
     }
   } catch (err) {
     console.error(err)

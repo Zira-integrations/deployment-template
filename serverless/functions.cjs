@@ -7,8 +7,8 @@ async function buildFunctions({ resolveVariable }) {
         [configItem.adapter]: {
           handler: `adapters/${configItem.adapter}.handler`,
           timeout: 90, // in seconds
-          memorySize: 512, // in MB
-        },
+          memorySize: 512 // in MB
+        }
       }
       return { ...acc, ...newFunction }
     }, {})

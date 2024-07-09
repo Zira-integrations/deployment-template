@@ -21,19 +21,19 @@ async function buildSesRules({ resolveVariable }) {
               ScanEnabled: true,
               Recipients: [
                 configItem.emailPrefix +
-                  `@${stage == 'dev' ? 'dev.' : ''}int.zira.us`,
+                  `@${stage == 'dev' ? 'dev.' : ''}int.zira.us`
               ],
               Actions: [
                 {
                   S3Action: {
                     BucketName: `integrations-data-zira-${stage}`,
-                    ObjectKeyPrefix: configItem.s3Prefix,
-                  },
-                },
-              ],
-            },
-          },
-        },
+                    ObjectKeyPrefix: configItem.s3Prefix
+                  }
+                }
+              ]
+            }
+          }
+        }
       }
       return { ...acc, ...newResource }
     }, {})
@@ -41,8 +41,8 @@ async function buildSesRules({ resolveVariable }) {
     return {
       Resources: {
         ...resources,
-        ...extraResources,
-      },
+        ...extraResources
+      }
     }
   } catch (err) {
     console.error(err)

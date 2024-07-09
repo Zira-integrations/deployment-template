@@ -15,14 +15,14 @@ async function buildEvents({ resolveVariable }) {
           DependsOn: ['ApiGatewayRestApi'],
           Properties: {
             RestApiId: {
-              Ref: 'ApiGatewayRestApi',
+              Ref: 'ApiGatewayRestApi'
             },
             ParentId: {
-              'Fn::GetAtt': ['ApiGatewayRestApi', 'RootResourceId'],
+              'Fn::GetAtt': ['ApiGatewayRestApi', 'RootResourceId']
             },
-            PathPart: `${configItem.adapter}`,
-          },
-        },
+            PathPart: `${configItem.adapter}`
+          }
+        }
       }
 
       for (const i in configItem.methods) {
@@ -34,10 +34,10 @@ async function buildEvents({ resolveVariable }) {
             AuthorizationType: 'NONE',
             HttpMethod: configItem.methods[i],
             ResourceId: {
-              Ref: configItem.adapter,
+              Ref: configItem.adapter
             },
             RestApiId: {
-              Ref: 'ApiGatewayRestApi',
+              Ref: 'ApiGatewayRestApi'
             },
             Integration: {
               Type: 'AWS_PROXY',
@@ -48,12 +48,12 @@ async function buildEvents({ resolveVariable }) {
                   {
                     ACCOUNT: accountId,
                     REGION: region,
-                    FUNCTION: `${service}-${stage}-${configItem.adapter}`,
-                  },
-                ],
-              },
-            },
-          },
+                    FUNCTION: `${service}-${stage}-${configItem.adapter}`
+                  }
+                ]
+              }
+            }
+          }
         }
       }
       const newApiKey = {
@@ -67,15 +67,15 @@ async function buildEvents({ resolveVariable }) {
             StageKeys: [
               {
                 RestApiId: {
-                  Ref: 'ApiGatewayRestApi',
+                  Ref: 'ApiGatewayRestApi'
                 },
                 StageName: {
-                  Ref: 'ApiGatewayStage',
-                },
-              },
-            ],
-          },
-        },
+                  Ref: 'ApiGatewayStage'
+                }
+              }
+            ]
+          }
+        }
       }
       const newUsagePlanKey = {
         [configItem.adapter + 'UsagePlanKey']: {
@@ -83,14 +83,14 @@ async function buildEvents({ resolveVariable }) {
           Type: 'AWS::ApiGateway::UsagePlanKey',
           Properties: {
             KeyId: {
-              Ref: `${configItem.adapter}ApiKey`,
+              Ref: `${configItem.adapter}ApiKey`
             },
             KeyType: 'API_KEY',
             UsagePlanId: {
-              Ref: 'ApiGatewayUsagePlan',
-            },
-          },
-        },
+              Ref: 'ApiGatewayUsagePlan'
+            }
+          }
+        }
       }
 
       return {
@@ -98,7 +98,7 @@ async function buildEvents({ resolveVariable }) {
         ...newResource,
         ...methods,
         ...newApiKey,
-        ...newUsagePlanKey,
+        ...newUsagePlanKey
       }
     }, {})
     let extraResources = {}
@@ -108,8 +108,8 @@ async function buildEvents({ resolveVariable }) {
           Type: 'AWS::ApiGateway::RestApi',
           Properties: {
             Name: `${stage}-${service}`,
-            ApiKeySourceType: 'HEADER',
-          },
+            ApiKeySourceType: 'HEADER'
+          }
         },
         ApiGatewayBasePath: {
           Type: 'AWS::ApiGateway::BasePathMapping',
@@ -118,21 +118,21 @@ async function buildEvents({ resolveVariable }) {
             BasePath: service,
             DomainName: `${stage == 'dev' ? 'dev.' : ''}zira.solutions`,
             RestApiId: {
-              Ref: 'ApiGatewayRestApi',
+              Ref: 'ApiGatewayRestApi'
             },
             Stage: {
-              Ref: 'ApiGatewayStage',
-            },
-          },
+              Ref: 'ApiGatewayStage'
+            }
+          }
         },
         ApiGatewayDeployment: {
           Type: 'AWS::ApiGateway::Deployment',
           Properties: {
             RestApiId: {
-              Ref: 'ApiGatewayRestApi',
-            },
+              Ref: 'ApiGatewayRestApi'
+            }
           },
-          DependsOn: Object.keys(methods),
+          DependsOn: Object.keys(methods)
         },
         ApiGatewayStage: {
           Type: 'AWS::ApiGateway::Stage',
@@ -140,12 +140,12 @@ async function buildEvents({ resolveVariable }) {
           Properties: {
             StageName: stage,
             RestApiId: {
-              Ref: 'ApiGatewayRestApi',
+              Ref: 'ApiGatewayRestApi'
             },
             DeploymentId: {
-              Ref: 'ApiGatewayDeployment',
-            },
-          },
+              Ref: 'ApiGatewayDeployment'
+            }
+          }
         },
         ApiGatewayUsagePlan: {
           Type: 'AWS::ApiGateway::UsagePlan',
@@ -153,33 +153,33 @@ async function buildEvents({ resolveVariable }) {
             ApiStages: [
               {
                 ApiId: {
-                  Ref: 'ApiGatewayRestApi',
+                  Ref: 'ApiGatewayRestApi'
                 },
                 Stage: {
-                  Ref: 'ApiGatewayStage',
-                },
-              },
+                  Ref: 'ApiGatewayStage'
+                }
+              }
             ],
             Description: `${service} ${stage} usage plan`,
             Quota: {
               Limit: 10000,
-              Period: 'MONTH',
+              Period: 'MONTH'
             },
             Throttle: {
               BurstLimit: 200,
-              RateLimit: 100,
+              RateLimit: 100
             },
-            UsagePlanName: `${service}-${stage}`,
-          },
-        },
+            UsagePlanName: `${service}-${stage}`
+          }
+        }
       }
     }
 
     return {
       Resources: {
         ...resources,
-        ...extraResources,
-      },
+        ...extraResources
+      }
     }
   } catch (err) {
     console.error(err)

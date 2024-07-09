@@ -10,17 +10,17 @@ async function buildLogGroups({ resolveVariable }) {
         [capitalizedLambdaName + 'LogGroup']: {
           Type: 'AWS::Logs::LogGroup',
           Properties: {
-            RetentionInDays: '30',
-          },
-        },
+            RetentionInDays: '30'
+          }
+        }
       }
       return { ...acc, ...newResource }
     }, {})
 
     return {
       Resources: {
-        ...resources,
-      },
+        ...resources
+      }
     }
   } catch (err) {
     console.error(err)

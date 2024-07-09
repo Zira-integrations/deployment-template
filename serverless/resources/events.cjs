@@ -21,27 +21,27 @@ async function buildEvents({ resolveVariable }) {
               source: ['aws.s3'],
               detail: {
                 bucket: {
-                  name: [`integrations-data-zira-${stage}`],
+                  name: [`integrations-data-zira-${stage}`]
                 },
                 object: {
                   key: [
                     {
-                      prefix: configItem.s3Prefix,
-                    },
-                  ],
-                },
-              },
+                      prefix: configItem.s3Prefix
+                    }
+                  ]
+                }
+              }
             },
             Targets: [
               {
                 Id: lambdaResource + 'Target',
                 Arn: {
-                  'Fn::GetAtt': [lambdaResource, 'Arn'],
-                },
-              },
-            ],
-          },
-        },
+                  'Fn::GetAtt': [lambdaResource, 'Arn']
+                }
+              }
+            ]
+          }
+        }
       }
       return { ...acc, ...newResource }
     }, {})
@@ -49,8 +49,8 @@ async function buildEvents({ resolveVariable }) {
     return {
       Resources: {
         ...resources,
-        ...extraResources,
-      },
+        ...extraResources
+      }
     }
   } catch (err) {
     console.error(err)
