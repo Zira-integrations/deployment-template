@@ -1,3 +1,3 @@
 {
-    "ENV_NAME": "${self:provider.stage}"
+  "ENV_NAME": "${self:provider.stage}"
 }

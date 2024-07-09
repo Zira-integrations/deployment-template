@@ -1,54 +1,46 @@
 {
-    "stages": [
-        "prod"
-    ],
-    "topics": {
-        "ok": {
-            "topic": "arn:aws:sns:us-west-2:389281959699:sererless_prod"
-        },
-        "alarm": {
-            "topic": "arn:aws:sns:us-west-2:389281959699:sererless_prod"
-        },
-        "insufficientData": {
-            "topic": "arn:aws:sns:us-west-2:389281959699:serverless-email"
-        }
+  "stages": ["prod"],
+  "topics": {
+    "ok": {
+      "topic": "arn:aws:sns:us-west-2:389281959699:sererless_prod"
     },
-    "definitions": {
-        "functionErrors": {
-            "period": 60,
-            "treatMissingData": "notBreaching"
-        },
-        "functionInvocations": {
-            "threshold": 100,
-            "period": 60,
-            "treatMissingData": "notBreaching"
-        },
-        "functionDuration": {
-            "threshold": 5000,
-            "period": 60,
-            "treatMissingData": "notBreaching"
-        },
-        "functionThrottles": {
-            "treatMissingData": "notBreaching"
-        },
-        "customAlarm": {
-            "description": "latency greater then 5 seconds",
-            "namespace": "AWS/Lambda",
-            "metric": "duration",
-            "threshold": 5000,
-            "statistic": "Average",
-            "period": 60,
-            "evaluationPeriods": 1,
-            "comparisonOperator": "GreaterThanThreshold",
-            "treatMissingData": "notBreaching"
-        }
+    "alarm": {
+      "topic": "arn:aws:sns:us-west-2:389281959699:sererless_prod"
     },
-    "global": [
-        "functionThrottles",
-        "functionErrors"
-    ],
-    "function": [
-        "functionInvocations",
-        "functionDuration"
-    ]
+    "insufficientData": {
+      "topic": "arn:aws:sns:us-west-2:389281959699:serverless-email"
+    }
+  },
+  "definitions": {
+    "functionErrors": {
+      "period": 60,
+      "treatMissingData": "notBreaching"
+    },
+    "functionInvocations": {
+      "threshold": 100,
+      "period": 60,
+      "treatMissingData": "notBreaching"
+    },
+    "functionDuration": {
+      "threshold": 5000,
+      "period": 60,
+      "treatMissingData": "notBreaching"
+    },
+    "functionThrottles": {
+      "treatMissingData": "notBreaching"
+    },
+    "customAlarm": {
+      "description": "latency greater then 5 seconds",
+      "namespace": "AWS/Lambda",
+      "metric": "duration",
+      "threshold": 5000,
+      "statistic": "Average",
+      "period": 60,
+      "evaluationPeriods": 1,
+      "comparisonOperator": "GreaterThanThreshold",
+      "treatMissingData": "notBreaching"
+    }
+  },
+  "global": ["functionThrottles", "functionErrors"],
+  "function": ["functionInvocations", "functionDuration"]
 }

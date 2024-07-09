@@ -1,21 +1,21 @@
 [
-    {
-        "s3Prefix": "ExampleSite/Emails",
-        "emailPrefix": "example-site",
-        "adapter": "csvExample"
-    },
-    {
-        "s3Prefix": "ExampleSite/Emails",
-        "emailPrefix": "example-site",
-        "adapter": "xlsExample"
-    },
-    {
-        "s3Prefix": "ExampleSite/manual",
-        "adapter": "manualUploadExample"
-    },
-    {
-        "apiPrefix": "ExampleSite",
-        "adapter": "ExampleSite",
-        "methods": ["POST"]
-    }
+  {
+    "s3Prefix": "ExampleSite/Emails",
+    "emailPrefix": "example-site",
+    "adapter": "csvExample"
+  },
+  {
+    "s3Prefix": "ExampleSite/Emails",
+    "emailPrefix": "example-site",
+    "adapter": "xlsExample"
+  },
+  {
+    "s3Prefix": "ExampleSite/manual",
+    "adapter": "manualUploadExample"
+  },
+  {
+    "apiPrefix": "ExampleSite",
+    "adapter": "ExampleSite",
+    "methods": ["POST"]
+  }
 ]

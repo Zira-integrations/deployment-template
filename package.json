@@ -8,7 +8,8 @@
     "clean": "rm -rf .esbuild .serverless",
     "deploy-with-local-infra": "npm run clean && sh ../infra/mydeploy-prod.sh",
     "deploy-prod": "npm run clean && sh mydeploy-prod.sh",
-    "deploy-dev": "npm run clean && sh mydeploy-dev.sh"
+    "deploy-dev": "npm run clean && sh mydeploy-dev.sh",
+    "lint": "npx prettier --config .prettierrc --write ."
   },
   "dependencies": {
     "@middy/core": "^3.6.2",
@@ -25,6 +26,7 @@
     "esbuild-node-externals": "^1.5.0",
     "node": "16.18.0",
     "npm": "^10.2.0",
+    "prettier": "^3.3.2",
     "serverless": "^3.19.0",
     "serverless-esbuild": "^1.33.0",
     "serverless-plugin-aws-alerts": "^1.7.5",

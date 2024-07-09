@@ -1,9 +1,6 @@
-const extraResources = {
+const extraResources = {}
 
-}
-
-
-async function buildSesRules ({ resolveVariable }) {
+async function buildSesRules({ resolveVariable }) {
   try {
     const config = await resolveVariable('self:custom.context')
     const stage = await resolveVariable('self:provider.stage')
@@ -11,7 +8,8 @@ async function buildSesRules ({ resolveVariable }) {
       if (!configItem.emailPrefix || !configItem.s3Prefix) return acc
       const capitalizedLambdaName =
         configItem.adapter.charAt(0).toUpperCase() + configItem.adapter.slice(1)
-      const sesName = configItem.emailPrefix.replace(/[-.]/, '') + capitalizedLambdaName
+      const sesName =
+        configItem.emailPrefix.replace(/[-.]/, '') + capitalizedLambdaName
       const newResource = {
         [sesName + 'SESRule']: {
           Type: 'AWS::SES::ReceiptRule',
@@ -21,18 +19,21 @@ async function buildSesRules ({ resolveVariable }) {
               Name: sesName + 'Rule' + (index + 1),
               Enabled: true,
               ScanEnabled: true,
-              Recipients: [configItem.emailPrefix + `@${stage == 'dev' ? 'dev.' : ''}int.zira.us`],
+              Recipients: [
+                configItem.emailPrefix +
+                  `@${stage == 'dev' ? 'dev.' : ''}int.zira.us`,
+              ],
               Actions: [
                 {
                   S3Action: {
                     BucketName: `integrations-data-zira-${stage}`,
-                    ObjectKeyPrefix: configItem.s3Prefix
-                  }
-                }
-              ]
-            }
-          }
-        }
+                    ObjectKeyPrefix: configItem.s3Prefix,
+                  },
+                },
+              ],
+            },
+          },
+        },
       }
       return { ...acc, ...newResource }
     }, {})
@@ -40,8 +41,8 @@ async function buildSesRules ({ resolveVariable }) {
     return {
       Resources: {
         ...resources,
-        ...extraResources
-      }
+        ...extraResources,
+      },
     }
   } catch (err) {
     console.error(err)
