@@ -17,5 +17,10 @@
     "apiPrefix": "ExampleSite",
     "adapter": "apiExample",
     "methods": ["POST"]
+  },
+  {
+    "schedulerPrefix": "ExampleSite",
+    "adapter": "scheduledExample",
+    "schedule": "cron(0 12 1 * ? *)"
   }
 ]
