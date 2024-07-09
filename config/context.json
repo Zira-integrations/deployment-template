@@ -1,25 +1,25 @@
 [
-    {
-        "s3Prefix": "ExampleSite/Emails",
-        "emailPrefix": "example-site",
-        "adapter": "csvExample"
-    },
-    {
-        "s3Prefix": "ExampleSite/Emails",
-        "emailPrefix": "example-site",
-        "adapter": "xlsExample"
-    },
-    {
-        "s3Prefix": "ExampleSite/manual",
-        "adapter": "manualUploadExample"
-    },
-    {
-        "apiPrefix": "ExampleSite",
-        "adapter": "ExampleSite",
-        "methods": ["POST"]
-    },
-    {
-        "adapter": "scheduledExample",
-        "schedule": "cron(0 12 1 * ? *)"
-    }
+  {
+    "s3Prefix": "ExampleSite/Emails",
+    "emailPrefix": "example-site",
+    "adapter": "csvExample"
+  },
+  {
+    "s3Prefix": "ExampleSite/Emails",
+    "emailPrefix": "example-site",
+    "adapter": "xlsExample"
+  },
+  {
+    "s3Prefix": "ExampleSite/manual",
+    "adapter": "manualUploadExample"
+  },
+  {
+    "apiPrefix": "ExampleSite",
+    "adapter": "ExampleSite",
+    "methods": ["POST"]
+  },
+  {
+    "adapter": "scheduledExample",
+    "schedule": "cron(0 12 1 * ? *)"
+  }
 ]
