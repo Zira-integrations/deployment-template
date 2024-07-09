@@ -54,7 +54,6 @@ async function buildEvents({ resolveVariable }) {
           [capitalizedLambdaName + 'EventRule']: {
             Type: 'AWS::Events::Rule',
             Properties: {
-              Name: `${configItem.schedulerPrefix}`,
               Description: 'Cron Scheduler',
               ScheduleExpression: configItem.schedule,
               State: 'ENABLED',
