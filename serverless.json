@@ -1,31 +1,31 @@
 {
-	"service": "sandbox",
-	"package": {
-		"individually": true
-	},
-	"provider": {
-		"name": "aws",
-		"runtime": "nodejs16.x",
-		"versionFunctions": false,
-		"stage": "${opt:stage, 'prod'}",
-		"region": "${file(serverless/region.json):${self:provider.stage}}",
-		"environment": "${file(serverless/loadEnvs.cjs)}",
-		"cfnRole": "arn:aws:iam::${self:custom.accountId}:role/DeploymentServiceRole",
-		"iamRoleStatements": "${file(serverless/iamRoleStatements.json)}",
-		"deploymentBucket": {
-			"name": "serverless-deploys-zira-${self:provider.stage}",
-			"blockPublicAccess": "true"
-		}
-	},
-	"plugins": ["serverless-esbuild", "serverless-plugin-aws-alerts"],
-	"functions": "${file(serverless/functions.cjs)}",
-	"custom": {
-		"esbuild": {
-			"config": "./esbuild.config.cjs"
-		  },
-		"alerts": "${file(serverless/alerts.json)}",
-		"accountId": "419687873428",
-		"context": "${file(config/context.json)}"
-	},
-	"resources": "${file(serverless/resources.json)}"
+  "service": "sandbox",
+  "package": {
+    "individually": true
+  },
+  "provider": {
+    "name": "aws",
+    "runtime": "nodejs16.x",
+    "versionFunctions": false,
+    "stage": "${opt:stage, 'prod'}",
+    "region": "${file(serverless/region.json):${self:provider.stage}}",
+    "environment": "${file(serverless/loadEnvs.cjs)}",
+    "cfnRole": "arn:aws:iam::${self:custom.accountId}:role/DeploymentServiceRole",
+    "iamRoleStatements": "${file(serverless/iamRoleStatements.json)}",
+    "deploymentBucket": {
+      "name": "serverless-deploys-zira-${self:provider.stage}",
+      "blockPublicAccess": "true"
+    }
+  },
+  "plugins": ["serverless-esbuild", "serverless-plugin-aws-alerts"],
+  "functions": "${file(serverless/functions.cjs)}",
+  "custom": {
+    "esbuild": {
+      "config": "./esbuild.config.cjs"
+    },
+    "alerts": "${file(serverless/alerts.json)}",
+    "accountId": "419687873428",
+    "context": "${file(config/context.json)}"
+  },
+  "resources": "${file(serverless/resources.json)}"
 }

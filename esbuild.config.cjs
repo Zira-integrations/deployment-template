@@ -1,4 +1,4 @@
-module.exports = serverless => ({
+module.exports = (serverless) => ({
   plugins: [],
   external: ['pg-native'],
   minify: true,

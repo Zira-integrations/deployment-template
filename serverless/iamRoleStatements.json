@@ -1,10 +1,7 @@
 [
-    {
-        "Effect": "Allow",
-        "Action": [
-            "s3:*",
-            "iam:PassRole"
-        ],
-        "Resource": "*"
-    }
+  {
+    "Effect": "Allow",
+    "Action": ["s3:*", "iam:PassRole"],
+    "Resource": "*"
+  }
 ]
