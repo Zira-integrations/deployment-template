@@ -16,7 +16,7 @@
     "got": "^13.0.0",
     "node-jq": "^2.3.4",
     "xlsx": "^0.18.5",
-    "zira_integ": "^1.2.2"
+    "zira_integ": "^1.2.4"
   },
   "devDependencies": {
     "@tsconfig/node16": "^1.0.3",
