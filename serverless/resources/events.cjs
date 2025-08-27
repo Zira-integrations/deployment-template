@@ -22,7 +22,7 @@ async function buildEvents({ resolveVariable }) {
                 source: ['aws.s3'],
                 detail: {
                   bucket: {
-                    name: [`integrations-data-zira-${stage}`]
+                    name: ["${S3BucketNamePrefix}-" + stage]
                   },
                   object: {
                     key: [

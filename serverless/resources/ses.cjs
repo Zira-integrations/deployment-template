@@ -26,7 +26,7 @@ async function buildSesRules({ resolveVariable }) {
               Actions: [
                 {
                   S3Action: {
-                    BucketName: `integrations-data-zira-${stage}`,
+                    BucketName: "${S3BucketNamePrefix}-"+stage,
                     ObjectKeyPrefix: configItem.s3Prefix
                   }
                 }
