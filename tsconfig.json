@@ -1,5 +1,5 @@
 {
-  "extends": "@tsconfig/node16/tsconfig.json",
+  "extends": "@tsconfig/node20/tsconfig.json",
   "compilerOptions": {
     "lib": ["es2021"],
     "types": ["node"],
@@ -8,8 +8,8 @@
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "outDir": "./dist",
-    "module": "node16",
-    "moduleResolution": "Node16",
+    "module": "node20",
+    "moduleResolution": "nodenext",
     "target": "es2021"
   },
   "include": ["adapters/*"],

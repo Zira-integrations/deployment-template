@@ -2,16 +2,37 @@
   {
     "s3Prefix": "ExampleSite/Emails",
     "emailPrefix": "example-site",
-    "adapter": "csvExample"
+    "adapter": "csvExample",
+    "parameters":{
+      "S3BucketNamePrefix": {
+        "Type": "String",
+        "Description": "Description of the parameter.",
+        "Default": "my-data-bucket"
+      }
+    }
   },
   {
     "s3Prefix": "ExampleSite/Emails",
     "emailPrefix": "example-site",
-    "adapter": "xlsExample"
+    "adapter": "xlsExample",
+    "parameters":{
+      "S3BucketNamePrefix": {
+        "Type": "String",
+        "Description": "Description of the parameter.",
+        "Default": "my-data-bucket"
+      }
+    }
   },
   {
     "s3Prefix": "ExampleSite/manual",
-    "adapter": "manualUploadExample"
+    "adapter": "manualUploadExample",
+    "parameters":{
+      "S3BucketNamePrefix": {
+        "Type": "String",
+        "Description": "Description of the parameter.",
+        "Default": "my-data-bucket"
+      }
+    }
   },
   {
     "apiPrefix": "ExampleSite",
@@ -22,5 +43,27 @@
     "schedulerPrefix": "ExampleSite",
     "adapter": "scheduledExample",
     "schedule": "cron(0 12 1 * ? *)"
+  },
+  {
+    "s3Prefix": "ExampleSite/SFTP",
+    "adapter": "sftpExample",
+    "sftp": true,
+    "parameters":{
+      "SiteName": {
+          "Type": "String",
+          "Description": "Logical site name (used for SFTP username).",
+          "Default": "ExampleSite"
+      },
+      "SFTPPublicKey": {
+          "Type": "String",
+          "Description": "SSH public key for the SFTP user (OpenSSH format).",
+          "Default": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDR0Cir06V9T7sCjSptAqQucdV6nmfADvrtN6... ExampleSiteClientName"
+      },
+      "S3BucketNamePrefix": {
+        "Type": "String",
+        "Description": "Description of the parameter.",
+        "Default": "my-data-bucket"
+      }
+    }
   }
 ]
